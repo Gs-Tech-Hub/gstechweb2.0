@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+.primaryColor {
+    background-color: orange;
+}
+
+.secondaryBgColor {
+    background-color: #fcfafa;
+}
+
+.primaryColorText {
+    color: orange;
+}
+
+.sh {
+    box-shadow: 0 0px 9px 3px rgba(0, 0, 0, 0.048);
+}

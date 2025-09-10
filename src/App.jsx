@@ -1,11 +1,15 @@
-import './App.css'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Home } from './AllFiles'
 
-function App() {
 
+const App = () => {
   return (
-    <>
-      <h1 className='font-bold bg-[red]'>gs tech</h1>
-    </>
+    <Router>
+      <Routes>
+        <Route path='/' index element={<Home />} />
+        <Route path='/*' element={<Home />} />
+      </Routes>
+    </Router>
   )
 }
 
