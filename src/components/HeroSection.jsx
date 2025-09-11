@@ -2,7 +2,7 @@ import React from 'react'
 
 const HeroSection = () => {
     return (
-        <main className='pt-[4rem] pb-[1rem] px-[1rem] '>
+        <main className='pt-[4rem] pb-[1rem] px-[1rem] ' id='home'>
             <div className='flex items-start justify-around'>
                 <div>
                     <h1 className='font-bold text-[3.8rem]'>Transform Your Business <br />With Cutting edge <span className='primaryColorText'>Digital</span><br /> <span className='primaryColorText'>Solutions</span></h1>

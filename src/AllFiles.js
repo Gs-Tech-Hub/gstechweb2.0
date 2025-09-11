@@ -4,5 +4,9 @@ export { default as MileStone } from './components/MileStone';
 export { default as About } from './components/About';
 export { default as Services } from './components/Services';
 export { default as Pricing } from './components/Pricing';
+export { default as Footer } from './components/Footer';
+export { default as CallToAction } from './components/CallToAction';
 
 export { default as Home } from './pages/Home';
+export { default as Contact } from './pages/Contact';
+export { default as ServiceDetail3 } from './pages/ServiceDetail3';

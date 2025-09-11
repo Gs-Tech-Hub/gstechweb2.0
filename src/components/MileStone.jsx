@@ -2,7 +2,7 @@ import React from 'react'
 
 const MileStone = () => {
     return (
-        <div className='w-[75%] relative bottom-[-7rem] bg-[white] sh   pb-[2rem] rounded-[0.5rem] mx-[auto] ' >
+        <div className='w-[75%] relative bottom-[-7rem] bg-[white] sh  pb-[2rem] rounded-[0.5rem] mx-[auto] border-[1px] border-[#e0dddd]' >
             <h2 className='font-medium text-[1.7rem] text-center pt-[1rem] mb-[1.3rem]'>Our MileStones</h2>
             <div className='flex items-center justify-around'>
                 <div className='text-center'>

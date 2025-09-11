@@ -16,7 +16,7 @@ const Services = () => {
                     <div className='p-[0.7rem] bg-[#ffa600c3] w-[fit-content] rounded-[0.5rem] mb-[0.5rem]'><FaGlobeAmericas size={22} color='white' /></div>
                     <h3 className='font-bold text-[1.36rem] mb-[0.3rem]'>Digital Presence & Marketing Solutions</h3>
                     <p>Designed to enhance brand visibility and drive customer engagement through targeted digital strategies.</p>
-                    <div className='mt-[1.8rem] flex items-center justify-end cursor-pointer hover:text-[orange]'>
+                    <div className='mt-[1.8rem] flex items-center justify-end cursor-pointer  w-[fit-content] ml-[auto] hover:text-[orange]'>
                         <p className='font-semibold text-[1.1rem]'>Learn more </p>
                         <FiArrowUpRight />
                     </div>
@@ -25,7 +25,7 @@ const Services = () => {
                     <div className='p-[0.7rem] bg-[#ffa600c3] w-[fit-content] rounded-[0.5rem] mb-[0.5rem]'><GiTechnoHeart size={22} color='white' /></div>
                     <h3 className='font-bold text-[1.36rem] mb-[0.3rem]'>Enterprise Management Solutions</h3>
                     <p>A centralized system for businesses to streamline operations and enhance efficiency with automation and digital tools.</p>
-                    <div className='mt-[1.8rem] flex items-center justify-end cursor-pointer hover:text-[orange]'>
+                    <div className='mt-[1.8rem] flex items-center justify-end cursor-pointer  w-[fit-content] ml-[auto] hover:text-[orange]'>
                         <p className='font-semibold text-[1.1rem]'>Learn more </p>
                         <FiArrowUpRight />
                     </div>
@@ -34,7 +34,7 @@ const Services = () => {
                     <div className='p-[0.7rem] bg-[#ffa600c3] w-[fit-content] rounded-[0.5rem] mb-[0.5rem]'><FaLaptop size={22} color='white' /></div>
                     <h3 className='font-bold text-[1.36rem] mb-[0.3rem]'>Hardware & Infrastructure Solutions</h3>
                     <p>For businesses requiring physical infrastructure to support digital transformation and secure operations.</p>
-                    <div className='mt-[1.8rem] flex items-center justify-end cursor-pointer hover:text-[orange]'>
+                    <div className='mt-[1.8rem] flex items-center justify-end cursor-pointer hover:text-[orange] w-[fit-content] ml-[auto]'>
                         <p className='font-semibold text-[1.1rem]'>Learn more </p>
                         <FiArrowUpRight />
                     </div>

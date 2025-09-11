@@ -27,7 +27,7 @@ const Pricing = () => {
                 </div>
                 <div className='bg-[white] w-[27rem] border-[#e0dddd] border-[1px] rounded-[0.6rem] p-[1rem]'>
                     <h2 className='font-bold text-[1.5rem] mb-[1rem]'>Premium Package</h2>
-                    <div className='flex items-center mb-[0.6rem]'><b className='text-[2.8rem]'>$500</b> <p className='mb-[-0.9rem] text-[1.1rem]'>/year</p></div>
+                    <div className='flex items-center mb-[0.6rem]'><b className='text-[2.8rem]'>$1,500</b> <p className='mb-[-0.9rem] text-[1.1rem]'>/year</p></div>
                     <p className='border-b-[1px] border-[#cdcbcb] pb-[2rem] text-[#555353]'>Control your choices for effective business growth and more customers.</p>
                     <div className='my-[2rem] '>
                         <div className='flex items-start mt-[1rem]'>
