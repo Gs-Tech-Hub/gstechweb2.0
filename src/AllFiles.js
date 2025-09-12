@@ -6,6 +6,8 @@ export { default as Services } from './components/Services';
 export { default as Pricing } from './components/Pricing';
 export { default as Footer } from './components/Footer';
 export { default as CallToAction } from './components/CallToAction';
+export { default as Testimonial } from './components/Testimonial';
+export { default as OurProcess } from './components/OurProcess';
 
 export { default as Home } from './pages/Home';
 export { default as Contact } from './pages/Contact';

@@ -1,4 +1,4 @@
-import { Nav, HeroSection, MileStone, About, Services, Pricing, Footer, CallToAction } from "../AllFiles"
+import { Nav, HeroSection, MileStone, About, Services, Testimonial, Pricing, Footer, OurProcess, CallToAction } from "../AllFiles"
 
 const Home = () => {
     return (
@@ -9,6 +9,8 @@ const Home = () => {
             <About />
             <Services />
             <Pricing />
+            <Testimonial />
+            <OurProcess />
             < CallToAction />
             <Footer />
 

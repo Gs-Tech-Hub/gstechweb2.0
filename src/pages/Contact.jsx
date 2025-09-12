@@ -1,6 +1,8 @@
 import React from 'react'
 import { FaGlobeAmericas } from 'react-icons/fa';
-
+import { MdEmail } from 'react-icons/md';
+import { FaPhoneSquareAlt } from 'react-icons/fa';
+import { RiWhatsappFill } from 'react-icons/ri';
 
 const Contact = () => {
     return (
@@ -9,19 +11,19 @@ const Contact = () => {
                 <h1 className='font-bold text-[1.7rem] text-center pt-[1rem] mb-[3.3rem]'>Get in touch for more information and support</h1>
                 <div>
                     <div className="mx-[auto] w-[70%]">
-                        <div className='flex items-center justify-end pb-[2rem] border-b-[1px] border-b-[#eae9e9]'>
+                        <div className='flex items-center justify-end mb-[1rem] '>
                             <div className='flex items-center'>
-                                <FaGlobeAmericas />
+                                <MdEmail size={22} />
                                 <p>info@gstechhub.com.ng</p>
                             </div>
                             <div className='w-[1px] mx-[0.5rem] h-[1.1rem] border-[1px] border-[#3a3535]'></div>
                             <div className='flex items-center'>
-                                <FaGlobeAmericas />
+                                <FaPhoneSquareAlt size={21} />
                                 <p>+234 815 561 9895</p>
                             </div>
                             <div className='w-[1px] mx-[0.5rem] h-[1.1rem] border-[1px] border-[#3a3535]'></div>
                             <div className='flex items-center'>
-                                <FaGlobeAmericas />
+                                <RiWhatsappFill size={22} />
                                 <p>+44 7425 199 9895</p>
                             </div>
                         </div>
@@ -55,7 +57,6 @@ const Contact = () => {
                         </div>
                         <div className='text-end'>
                             <button className='cursor pointer primaryColor text-[white] outline-none rounded-[0.3rem] px-[0.6rem] w-[11rem] py-[0.5rem] text-[1.1rem] font-bold'>Submit</button>
-
                         </div>
                     </div>
                 </div>
