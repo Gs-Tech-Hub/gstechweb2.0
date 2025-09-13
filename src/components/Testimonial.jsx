@@ -46,7 +46,6 @@ function Testimonial() {
     return (
         <div className=" py-[1rem] pb-[7rem] px-[1rem] ">
             <h1 className='font-bold text-[1.8rem] text-center mb-[3rem]'>Testimonials </h1>
-
             <div className="w-[80%] mx-[auto] ">
                 <Slider {...settings}>
                     <div className="px-[1rem] text-center">

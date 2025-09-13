@@ -8,7 +8,14 @@ export { default as Footer } from './components/Footer';
 export { default as CallToAction } from './components/CallToAction';
 export { default as Testimonial } from './components/Testimonial';
 export { default as OurProcess } from './components/OurProcess';
+export { default as BlogCard } from './components/BlogCard';
+export { default as PortfolioCard } from './components/PortfolioCard';
+export { default as ImageSlider } from './components/ImageSlider';
 
 export { default as Home } from './pages/Home';
 export { default as Contact } from './pages/Contact';
 export { default as ServiceDetail3 } from './pages/ServiceDetail3';
+export { default as AllBlogs } from './pages/AllBlogs';
+export { default as AdminLogin } from './pages/AdminLogin';
+export { default as AllPortfolios } from './pages/AllPortfolios';
+export { default as PortfolioDetail } from './pages/PortfolioDetail';

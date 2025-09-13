@@ -5,6 +5,8 @@
 }
 
 .secondaryBgColor {
+    border-top: 1px solid #e0dddd;
+    border-bottom: 1px solid #e0dddd;
     background-color: #fcfafa;
 }
 
