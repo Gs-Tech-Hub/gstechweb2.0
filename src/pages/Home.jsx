@@ -1,9 +1,10 @@
-import { Nav, HeroSection, MileStone, About, Services, Testimonial, Pricing, Footer, OurProcess, CallToAction } from "../AllFiles"
+import { Nav, HeroSection, MileStone, ChatWoot, About, Services, Testimonial, Pricing, Footer, OurProcess, CallToAction } from "../AllFiles"
 
 const Home = () => {
     return (
         <div>
             <Nav />
+            <ChatWoot />
             <HeroSection />
             <MileStone />
             <About />
