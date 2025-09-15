@@ -1,5 +1,8 @@
+"use client"
 import LinesEllipsis from 'react-lines-ellipsis'
-import { Link } from 'react-router-dom'
+import Link from "next/link"
+import Image from 'next/image'
+
 
 const BlogCard = ({ allcampaigns }) => {
     return (
@@ -28,7 +31,7 @@ const BlogCard = ({ allcampaigns }) => {
                                 />
                                 <p className='text-[0.9rem] mt-[0.3rem] text-[#666464]'>22/09/2025</p>
                                 <div className=' text-end'>
-                                    <button className='primaryColor text-[white] outline-none rounded-[2rem] font-bold px-[1rem] py-[0.2rem] cursor-pointer text-[1.1rem] '><Link to={`/Blogs/${item.id}`}>View</Link></button>
+                                    <button className='primaryColor text-[white] outline-none rounded-[2rem] font-bold px-[1rem] py-[0.2rem] cursor-pointer text-[1.1rem] '><Link href={`/Blogs/${item.id}`}>View</Link></button>
                                 </div>
                             </div>
                         </div>

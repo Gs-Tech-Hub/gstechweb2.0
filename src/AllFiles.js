@@ -13,10 +13,3 @@ export { default as PortfolioCard } from './components/PortfolioCard';
 export { default as ImageSlider } from './components/ImageSlider';
 export { default as ChatWoot } from './components/ChatWoot';
 
-export { default as Home } from './pages/Home';
-export { default as Contact } from './pages/Contact';
-export { default as ServiceDetail3 } from './pages/ServiceDetail3';
-export { default as AllBlogs } from './pages/AllBlogs';
-export { default as AdminLogin } from './pages/AdminLogin';
-export { default as AllPortfolios } from './pages/AllPortfolios';
-export { default as PortfolioDetail } from './pages/PortfolioDetail';

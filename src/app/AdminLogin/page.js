@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
-import GsTechLogo from '../assets/GsTechLogo.png'
+"use client"
+import Image from 'next/image'
+import React, { useState } from 'react'
+import GsTechLogo from '../../../public/images/GsTechLogo.png'
 import { HiUser } from 'react-icons/hi2';
 import { HiLockClosed } from 'react-icons/hi';
 
 const AdminLogin = () => {
-    const navigate = useNavigate()
     const [loading, setloading] = useState(false)
     const [password, setpassword] = useState('')
     const [email, setemail] = useState('')
     const [errormsg, seterrormsg] = useState('')
-
 
 
 
@@ -23,7 +22,7 @@ const AdminLogin = () => {
             {/* style={{ boxShadow: ' 0px 2px 5px rgba(0, 0, 0, 0.4)' }} */}
             <div className='pt-[11rem]'>
                 <div className=' w-[20rem] m-[auto] text-center pt-[0.5rem] bg-[white] border-[1px] border-[lightgray] rounded-[0.18rem]  max-[345px]:w-[90%]'>
-                    <div className='w-[6.5rem] mx-[auto] h-[fit-content]'><img src={GsTechLogo} alt="company logo" /></div>
+                    <div className='w-[6.5rem] mx-[auto] h-[fit-content]'><Image src={GsTechLogo} alt="company logo" /></div>
                     <form action="">
                         <div className="flex w-[90%] items-center m-[auto] mt-[2.5rem] border-b-[1px] border-[#bebaba]">
                             <HiUser size={23} />

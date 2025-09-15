@@ -1,11 +1,12 @@
 import React from 'react'
-import GsTechLogo from '../assets/GsTechLogo.png'
+import Image from 'next/image'
+import GsTechLogo from '../../public/images/GsTechLogo.png'
 
 const Nav = () => {
     return (
         <nav className='flex items-center justify-between px-[2rem] py-[0.7rem] border-b-[1px] border-[#e0dddd]'>
             <div className='flex items-center'>
-                <div className='w-[4.5rem] h-[fit-content]'><img src={GsTechLogo} alt="company logo" /></div>
+                <div className='w-[4.5rem] h-[fit-content]'><Image src={GsTechLogo} alt="company logo" /></div>
                 <h2 className='font-semibold text-[2rem]'>GS Tech Hub</h2>
             </div>
             <div className='flex items-center'>

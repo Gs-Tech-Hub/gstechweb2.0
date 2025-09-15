@@ -1,14 +1,13 @@
-import { useParams } from 'react-router-dom'
-import { ImageSlider } from '../AllFiles'
+"use client"
+import { ImageSlider } from '../../../AllFiles'
 import { FaGlobeAmericas } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { FaPhoneSquareAlt } from 'react-icons/fa';
+import { use } from 'react';
 
-const PortfolioDetail = () => {
 
-
-    const data = useParams()
-    const { id } = data
+const PortfolioDetail = ({ params }) => {
+    const { id } = use(params);
     console.log(id)
     let sliderImg = [
         {

@@ -1,5 +1,5 @@
-import { PortfolioCard } from "../AllFiles"
-import { allcampaigns } from '../data/blogdB'
+import { PortfolioCard } from "../../AllFiles"
+import { allcampaigns } from '../../data/blogdB'
 
 const AllPortfolios = () => {
     return (

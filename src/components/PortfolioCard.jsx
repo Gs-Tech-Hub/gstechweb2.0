@@ -1,6 +1,10 @@
+"use client"
 import { FiArrowUpRight } from 'react-icons/fi'
 import LinesEllipsis from 'react-lines-ellipsis'
-import { Link, Links } from 'react-router-dom'
+import Link from "next/link"
+import Image from 'next/image'
+import process1Img from '../public/images/undraw_online-community_3o0l.svg'
+
 
 const PortfolioCard = ({ allcampaigns }) => {
     return (
@@ -9,7 +13,7 @@ const PortfolioCard = ({ allcampaigns }) => {
                 {
                     allcampaigns.map(item => {
                         return <div key={item.id} className='w-[22rem] mx-[1.5%] my-[2.5rem] border-[1px] m-[auto] rounded-[0.5rem] border-[lightgray] p-[0.8rem] max-[1417px]:mx-[2rem] max-[1073px]:mx-[1.5%] max-[1073px]:my-[1rem] max-[1073px]:w-[45%] max-[1073px]:p-[0.5rem] max-[390px]:w-[85%] max-[390px]:mx-[auto] max-[390px]:mb-[2rem] max-[390px]:p-[0.8rem]'>
-                            <div className='w-[100%] m-[auto] h-[15rem] max-[684px]:h-[13rem] max-[589px]:h-[11rem] max-[436px]:h-[9rem] max-[390px]:h-[11rem]'><img className='rounded-[0.5rem] h-[100%] w-[100%]' src={item.img} alt="" /></div>
+                            <div className='w-[100%] m-[auto] h-[15rem] max-[684px]:h-[13rem] max-[589px]:h-[11rem] max-[436px]:h-[9rem] max-[390px]:h-[11rem]'><Image className='rounded-[0.5rem] h-[100%] w-[100%]' src={item.img} alt="" /></div>
                             <div className='mt-[0.7rem] w-[100%] max-[509px]:px-[0rem]'>
                                 <h3 className='font-bold mb-[0.3rem] text-[1.1rem] w-[100%]'>
                                     <LinesEllipsis
@@ -33,7 +37,7 @@ const PortfolioCard = ({ allcampaigns }) => {
                                     </h3>
                                 </div>
                                 <div className='w-[fit-content] ml-[auto]'>
-                                    <Link className='mt-[1rem] flex items-center cursor-pointer w-[fit-content] ml-[auto] primaryColorText rounded-[0.5rem] border-[1px] border-[orange] p-[0.5rem] hover:text-[orange]' to={`/Portfolio/${item.id}`}>
+                                    <Link className='mt-[1rem] flex items-center cursor-pointer w-[fit-content] ml-[auto] primaryColorText rounded-[0.5rem] border-[1px] border-[orange] p-[0.5rem] hover:text-[orange]' href={`/Portfolio/${item.id}`}>
                                         <p className='font-semibold text-[1.1rem]'>View Detail</p>
                                         <FiArrowUpRight />
                                     </Link>

@@ -1,7 +1,6 @@
 import React from 'react'
 import GsTechLogo from '../assets/GsTechLogo.png'
-import { Link } from 'react-router-dom'
-
+import Link from "next/link"
 
 const Footer = () => {
     return (
@@ -25,11 +24,10 @@ const Footer = () => {
                 <div>
                     <h2 className='font-bold text-[1.36rem] text-[white] mb-[0.3rem]'>Links</h2>
                     <p><a href="#home">Home</a></p>
-                    <p><Link>About</Link></p>
-                    <p><Link>Services</Link></p>
-                    <p><Link>Services</Link></p>
-                    <p><Link>Portfolio</Link></p>
-                    <p><Link>Contact</Link></p>
+                    <p>About</p>
+                    <p>Services</p>
+                    <p><Link href='/Portfolio'>Portfolio</Link></p>
+                    <p><Link href='/Contact'>Contact</Link></p>
                 </div>
                 <div>
                     <h2 className='font-bold text-[1.36rem] text-[white] mb-[1.3rem]'>Subscribe to our newsletter</h2>
