@@ -1,4 +1,6 @@
+import { GlobalContext } from "@/AllFiles";
 import "./globals.css";
+
 
 export const metadata = {
   title: "GSTECHHUB - Web Development & IT Solutions",
@@ -27,7 +29,9 @@ export default function RootLayout({ children }) {
       </head>
 
       <body>
-        {children}
+        <GlobalContext>
+          {children}
+        </GlobalContext>
       </body>
     </html>
   );

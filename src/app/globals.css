@@ -6,6 +6,10 @@
   background-color: orange;
 }
 
+image {
+  height: 100%;
+}
+
 .secondaryBgColor {
   border-top: 1px solid #e0dddd;
   border-bottom: 1px solid #e0dddd;

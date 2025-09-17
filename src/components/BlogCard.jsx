@@ -4,7 +4,7 @@ import Link from "next/link"
 import Image from 'next/image'
 
 
-const BlogCard = ({ allcampaigns }) => {
+const BlogCard = ({ allcampaigns, admin }) => {
     return (
         <div>
             <div className='flex items-center justify-center flex-wrap max-[390px]:block '>
@@ -31,7 +31,7 @@ const BlogCard = ({ allcampaigns }) => {
                                 />
                                 <p className='text-[0.9rem] mt-[0.3rem] text-[#666464]'>22/09/2025</p>
                                 <div className=' text-end'>
-                                    <button className='primaryColor text-[white] outline-none rounded-[2rem] font-bold px-[1rem] py-[0.2rem] cursor-pointer text-[1.1rem] '><Link href={`/Blogs/${item.id}`}>View</Link></button>
+                                    <button className='primaryColor text-[white] outline-none rounded-[2rem] font-bold px-[1rem] py-[0.2rem] cursor-pointer text-[1.1rem] '><Link href={admin ? `/Admin/AllBlogs/${item.id}` : `/Blogs/${item.id}`}>View</Link></button>
                                 </div>
                             </div>
                         </div>

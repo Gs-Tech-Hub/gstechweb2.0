@@ -1,20 +1,36 @@
 "use client"
 import Image from 'next/image'
+import { useRouter } from "next/navigation"
 import React, { useState } from 'react'
 import GsTechLogo from '../../../public/images/GsTechLogo.png'
 import { HiUser } from 'react-icons/hi2';
 import { HiLockClosed } from 'react-icons/hi';
+import { PopUpMessage } from '@/AllFiles';
+import { displayPopUpMessage, cancelPopUP } from '@/helper function/pop up';
 
 const AdminLogin = () => {
+    const router = useRouter()
     const [loading, setloading] = useState(false)
     const [password, setpassword] = useState('')
     const [email, setemail] = useState('')
-    const [errormsg, seterrormsg] = useState('')
+    const [displayPopUp, setdisplayPopUp] = useState(false)
+    const [popUpMsg, setpopUpMsg] = useState('campaign successfully deleted')
+    const [popUpType, setpopUpType] = useState('')
 
 
 
     const handleButton = (e) => {
+        setloading(true)
         e.preventDefault()
+        if (email === '' || password === '') {
+            displayPopUpMessage('fill in all required fields', setpopUpMsg, setpopUpType, setdisplayPopUp, true)
+            cancelPopUP(setdisplayPopUp, 1000)
+            setloading(false)
+        } else {
+            setloading(false)
+            router.push('/Admin/AllBlogs')
+
+        }
 
     }
     return (
@@ -22,7 +38,7 @@ const AdminLogin = () => {
             {/* style={{ boxShadow: ' 0px 2px 5px rgba(0, 0, 0, 0.4)' }} */}
             <div className='pt-[11rem]'>
                 <div className=' w-[20rem] m-[auto] text-center pt-[0.5rem] bg-[white] border-[1px] border-[lightgray] rounded-[0.18rem]  max-[345px]:w-[90%]'>
-                    <div className='w-[6.5rem] mx-[auto] h-[fit-content]'><Image src={GsTechLogo} alt="company logo" /></div>
+                    <div className='w-[6.5rem] mx-[auto] h-[fit-content]'><Image src={GsTechLogo} width={120} height={100} alt="company logo" /></div>
                     <form action="">
                         <div className="flex w-[90%] items-center m-[auto] mt-[2.5rem] border-b-[1px] border-[#bebaba]">
                             <HiUser size={23} />
@@ -32,7 +48,6 @@ const AdminLogin = () => {
                             <HiLockClosed size={23} />
                             <input placeholder="password" onChange={(e) => setpassword(e.target.value)} value={password} className='w-[84%] rounded-[0.2rem] px-[0.4rem] py-[0.56rem] bg-[none] outline-none' type="password" />
                         </div>
-                        <p className='font-bold text-[red] mt-[0.5rem]'>{errormsg}</p>
                         <button onClick={(e) => handleButton(e)} className="w-[90%] rounded-[0.2rem] px-[3rem] py-[0.4rem] primaryColor text-white font-bold cursor-pointer mt-[1.4rem] mb-[1.7rem] outline-none hover:bg-[#17cf5e]">
                             {
                                 loading ?
@@ -47,6 +62,8 @@ const AdminLogin = () => {
                     </form>
                 </div>
             </div>
+            <PopUpMessage popUpMsg={popUpMsg} displayPopUp={displayPopUp} type={popUpType} duration={3000} />
+
         </div>
     )
 }
