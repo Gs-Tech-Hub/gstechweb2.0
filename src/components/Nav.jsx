@@ -43,7 +43,7 @@ const Nav = () => {
                     <li className='mx-[1.9rem] cursor-pointer text-[1.1rem] max-[990px]:mx-[1rem] max-[865px]:my-[2rem] max-[865px]:font-bold max-[865px]:text-[1.2rem]'>Service</li>
                     <li className='mx-[1.9rem] cursor-pointer text-[1.1rem] max-[990px]:mx-[1rem] max-[865px]:my-[2rem] max-[865px]:font-bold max-[865px]:text-[1.2rem]'><Link href='/contactUs'>Contact</Link></li>
                 </ul>
-                <div className='max-[865px]:text-center'><button className='cursor pointer primaryColor text-[white] cursor-pointer outline-none rounded-[2rem] px-[0.6rem] py-[0.35rem] text-[1.1rem] max-[990px]:ml-[0.6rem] max-[865px]:font-bold max-[865px]:text-[1.2rem]'>Get started</button></div>
+                <div className='max-[865px]:text-center'><button className='cursor pointer primaryColor text-[white] cursor-pointer outline-none rounded-[2rem] px-[0.6rem] py-[0.35rem] text-[1.1rem] max-[990px]:ml-[0.6rem] max-[865px]:font-bold max-[865px]:text-[1.2rem]'><Link href='/contactUs'>Get Started</Link></button></div>
             </div>
             <div onClick={() => setmobile(!mobile)} className='hidden max-[865px]:block max-[865px]:mr-[0.5rem]'><LuMenu size={25} /></div>
 

@@ -6,6 +6,10 @@
   background-color: orange;
 }
 
+.primaryColor:hover {
+  background-color: rgb(239, 156, 2);
+}
+
 image {
   height: 100%;
 }

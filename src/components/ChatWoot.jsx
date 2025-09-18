@@ -1,6 +1,7 @@
 'use client'
 import { useEffect } from "react";
 
+
 const ChatWoot = () => {
     useEffect(() => {
         const BASE_URL = "https://app.chatwoot.com";

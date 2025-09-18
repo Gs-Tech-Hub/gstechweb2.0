@@ -5,16 +5,19 @@ import React, { useState } from 'react'
 import GsTechLogo from '../../../public/images/GsTechLogo.png'
 import { HiUser } from 'react-icons/hi2';
 import { HiLockClosed } from 'react-icons/hi';
+import { useGeneralContext } from '@/context/GlobalContext'
 import { PopUpMessage } from '@/AllFiles';
 import { displayPopUpMessage, cancelPopUP } from '@/helper function/pop up';
 
 const AdminLogin = () => {
     const router = useRouter()
+    const userData = useGeneralContext()
+    const { setid, setuserName, } = userData
     const [loading, setloading] = useState(false)
     const [password, setpassword] = useState('')
     const [email, setemail] = useState('')
     const [displayPopUp, setdisplayPopUp] = useState(false)
-    const [popUpMsg, setpopUpMsg] = useState('campaign successfully deleted')
+    const [popUpMsg, setpopUpMsg] = useState('blog successfully deleted')
     const [popUpType, setpopUpType] = useState('')
 
 
@@ -23,16 +26,16 @@ const AdminLogin = () => {
         setloading(true)
         e.preventDefault()
         if (email === '' || password === '') {
-            displayPopUpMessage('fill in all required fields', setpopUpMsg, setpopUpType, setdisplayPopUp, true)
+            displayPopUpMessage('fill in all required fields', setpopUpMsg, setpopUpType, setdisplayPopUp, false)
             cancelPopUP(setdisplayPopUp, 1000)
             setloading(false)
         } else {
+            setuserName(email)
             setloading(false)
             router.push('/Admin/AllBlogs')
-
         }
-
     }
+
     return (
         <div className="Signup">
             {/* style={{ boxShadow: ' 0px 2px 5px rgba(0, 0, 0, 0.4)' }} */}

@@ -1,9 +1,9 @@
 "use client"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { use } from 'react';
 import { useRouter } from "next/navigation"
 import { BiSolidEditAlt } from 'react-icons/bi';
-import { ModalComponent, PopUpMessage } from '@/AllFiles';
+import { ModalComponent, PopUpMessage, Loader } from '@/AllFiles';
 import { displayPopUpMessage, cancelPopUP } from '@/helper function/pop up';
 import { useGeneralContext } from '@/context/GlobalContext'
 
@@ -11,10 +11,11 @@ import { useGeneralContext } from '@/context/GlobalContext'
 
 const page = ({ params }) => {
     const router = useRouter()
+    let isAuthenticated = false
     const { id } = use(params);
     console.log(id)
     const userData = useGeneralContext()
-    const { setblogTitleC, setblogC, setblogTagLineC, seteditBlogC } = userData
+    const { setblogTitleC, setblogC, setblogTagLineC, seteditBlogC, userName } = userData
     const [displayPopUp, setdisplayPopUp] = useState(false)
     const [popUpMsg, setpopUpMsg] = useState('campaign successfully deleted')
     const [popUpType, setpopUpType] = useState('error')
@@ -34,30 +35,41 @@ const page = ({ params }) => {
         setblogTitleC(blogTitle)
         seteditBlogC(true)
         router.push('/Admin/CreateBlog')
-
-
     }
 
+    useEffect(() => {
+        if (userName === '') router.push('/Admin')
+        else isAuthenticated = true
+
+    }, [router, userName])
+
     return (
-        <div className='w-[95%] m-[auto] pt-[0.7rem] pb-[3rem]'>
-            <div className="mt-[1.6rem] mb-[1rem] w-[100%] m-[auto] pb-[1rem]  max-[740px]:h-[30rem] max-[543px]:h-[26rem] max-[466px]:h-[23rem] max-[426px]:h-[21rem] max-[377px]:h-[19rem]  max-[327px]:h-[16.5rem]">
-                <img src="/images/marek-piwnicki-zIiKZtB_v-Y-unsplash.jpg" alt="blog image" />
-            </div>
-            <div className='flex items-start justify-between mb-[1.3rem] max-[427px]:block'>
-                <h2 className='font-bold text-[1.4rem] max-[427px]:mb-[1rem]'>{blogTitle}</h2>
-                <div className='flex items-center'>
-                    <ModalComponent admin={true} deleteBlog={deleteBlog} />
-                    <BiSolidEditAlt onClick={editBlog} className='ml-[2rem] cursor-pointer' size={28} />
+        <div>
+            {isAuthenticated ?
+                <div className='w-[95%] m-[auto] pt-[0.7rem] pb-[3rem]'>
+                    <div className="mt-[1.6rem] mb-[1rem] w-[100%] m-[auto] pb-[1rem]  max-[740px]:h-[30rem] max-[543px]:h-[26rem] max-[466px]:h-[23rem] max-[426px]:h-[21rem] max-[377px]:h-[19rem]  max-[327px]:h-[16.5rem]">
+                        <img src="/images/marek-piwnicki-zIiKZtB_v-Y-unsplash.jpg" alt="blog image" />
+                    </div>
+                    <div className='flex items-start justify-between mb-[1.3rem] max-[427px]:block'>
+                        <h2 className='font-bold text-[1.4rem] max-[427px]:mb-[1rem]'>{blogTitle}</h2>
+                        <div className='flex items-center'>
+                            <ModalComponent admin={true} deleteBlog={deleteBlog} />
+                            <BiSolidEditAlt onClick={editBlog} className='ml-[2rem] cursor-pointer' size={28} />
+                        </div>
+                    </div>
+                    <div className='mb-[1.77rem]'>
+                        <p className='text-[1.2rem] leading-[2.2rem]'>{blog}</p>
+                    </div>
+                    <div>
+                        <i className='text-[1.2rem] font-mono'>{blogTagLine}</i>
+                    </div>
+                    <PopUpMessage popUpMsg={popUpMsg} displayPopUp={displayPopUp} type={popUpType} duration={3000} />
                 </div>
-            </div>
-            <div className='mb-[1.77rem]'>
-                <p className='text-[1.2rem] leading-[2.2rem]'>{blog}</p>
-            </div>
-            <div>
-                <i className='text-[1.2rem] font-mono'>{blogTagLine}</i>
-            </div>
-            <PopUpMessage popUpMsg={popUpMsg} displayPopUp={displayPopUp} type={popUpType} duration={3000} />
+                :
+                <Loader />
+            }
         </div>
+
     )
 }
 
