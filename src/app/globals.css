@@ -38,3 +38,10 @@ footer p {
     transition: 0.65s;
   }
 }
+
+@media (max-width:417px) {
+
+  footer p {
+    font-size: 0.92rem;
+  }
+}

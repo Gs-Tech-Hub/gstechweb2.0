@@ -5,6 +5,9 @@ import "./globals.css";
 export const metadata = {
   title: "GSTECHHUB - Web Development & IT Solutions",
   description: "GsTechHub Digital Agency, a digital service provider",
+  icons: {
+    icon: '/favicon.ico', // Path to your favicon
+  },
 };
 
 export default function RootLayout({ children }) {

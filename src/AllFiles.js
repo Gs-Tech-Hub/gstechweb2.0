@@ -11,10 +11,10 @@ export { default as OurProcess } from './components/OurProcess';
 export { default as BlogCard } from './components/BlogCard';
 export { default as PortfolioCard } from './components/PortfolioCard';
 export { default as ImageSlider } from './components/ImageSlider';
-export { default as ChatWoot } from './components/ChatWoot';
 export { default as ModalComponent } from './components/Modal';
 export { default as PopUpMessage } from './components/PopUpMessage';
 export { default as Loader } from './components/Loader';
+export { default as Tawk } from './components/Tawk';
 
 
 

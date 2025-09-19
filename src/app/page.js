@@ -1,22 +1,16 @@
 'use client'
-import Image from "next/image";
-import { Nav, HeroSection, MileStone, ChatWoot, About, Services, Testimonial, Pricing, Footer, OurProcess, CallToAction } from "../AllFiles"
+import { useTawkTo } from "@/helper function/useTawkTo";
+import { Nav, HeroSection, MileStone, Tawk, About, Services, Testimonial, Pricing, Footer, OurProcess, CallToAction } from "../AllFiles"
 
 
 export default function Home() {
+  // function to display live chat, please note it is already in a useeffect hook
+  useTawkTo();
+
   return (
     <div>
-
-      {/* <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        /> */}
       <Nav />
-      {/* <ChatWoot /> */}
+      <Tawk />
       <HeroSection />
       <MileStone />
       <About />

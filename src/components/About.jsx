@@ -3,7 +3,7 @@ import AboutImage from '../../public/images/pexels-pixabay-416405.jpg'
 
 const About = () => {
     return (
-        <div className='secondaryBgColor pt-[8.6rem] py-[1.5rem] pb-[7rem] px-[1rem] max-[431px]:pt-[6rem]'>
+        <div id='about' className='secondaryBgColor pt-[8.6rem] py-[1.5rem] pb-[7rem] px-[1rem] max-[431px]:pt-[6rem] max-[1092px]:pb-[4rem]'>
             <div >
                 <h1 className='font-bold text-[1.8rem] text-center mb-[3rem] max-[431px]:mb-[1rem]'>About us</h1>
                 <div className='flex items-center justify-center max-[1092px]:block max-[1092px]:text-center'>

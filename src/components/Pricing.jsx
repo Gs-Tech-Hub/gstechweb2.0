@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaCheckCircle } from 'react-icons/fa';
+import Link from "next/link"
 
 const Pricing = () => {
     return (
@@ -24,7 +25,7 @@ const Pricing = () => {
                             <h3 className='w-[93%] ml-[0.4rem] mt-[-0.2rem] font-bold text-[#423f3f] text-[1.1rem]'>Full setup and training included</h3>
                         </div>
                     </div>
-                    <button className='primaryColor text-[white] outline-none rounded-[2rem] w-[100%] font-bold px-[0.6rem] py-[0.7rem] text-[1.1rem]'>Choose Package</button>
+                    <Link href='/contactUs'><button className='primaryColor text-[white] outline-none rounded-[2rem] w-[100%] font-bold px-[0.6rem] py-[0.7rem] cursor-pointer text-[1.1rem]'>Choose Package</button></Link>
                 </div>
                 <div className='bg-[white] w-[27rem] border-[#e0dddd] border-[1px] rounded-[0.6rem] p-[1rem] max-[939px]:w-[45%] max-[563px]:w-[80%] max-[563px]:mx-[auto] max-[563px]:mb-[3.2rem]'>
                     <h2 className='font-bold text-[1.5rem] mb-[1rem]'>Premium Package</h2>
@@ -44,7 +45,7 @@ const Pricing = () => {
                             <h3 className='w-[93%] ml-[0.4rem] mt-[-0.2rem] font-bold text-[#423f3f] text-[1.1rem]'>Custom features for your specific needs</h3>
                         </div>
                     </div>
-                    <button className='primaryColor text-[white] outline-none rounded-[2rem] w-[100%] font-bold px-[0.6rem] py-[0.7rem] cursor-pointer text-[1.1rem]'>Choose Package</button>
+                    <Link href='/contactUs'><button className='primaryColor text-[white] outline-none rounded-[2rem] w-[100%] font-bold px-[0.6rem] py-[0.7rem] cursor-pointer text-[1.1rem]'>Choose Package</button></Link>
                 </div>
             </div >
 
