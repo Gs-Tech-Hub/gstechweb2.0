@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import Link from "next/link"
 import { PopUpMessage } from '@/components/PopUpMessage';
-import { displayPopUpMessage, cancelPopUP } from '@/helperFunction/pop up';
+import { displayPopUpMessage, cancelPopUP } from '@/helperFunction/popUp';
 
 
 const Footer = () => {
