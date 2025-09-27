@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
     // Validate request data
     const validated = ProjectOnboardingSchema.safeParse(data)
     if (!validated.success) {
-      return createResponse({ error: validated.error.errors }, 400)
+      return createResponse({ error: validated.error }, 400)
     }
 
     const project = await prisma.projectOnboarding.create({

@@ -1,5 +1,5 @@
 'use client'
-import { useTawkTo } from "@/helper function/useTawkTo";
+import { useTawkTo } from "@/helperFunction/useTawkTo";
 import { Nav, HeroSection, MileStone, Tawk, About, Services, Testimonial, Pricing, Footer, OurProcess, CallToAction } from "../AllFiles"
 
 

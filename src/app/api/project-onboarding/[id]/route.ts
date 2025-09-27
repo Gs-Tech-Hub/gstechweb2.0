@@ -26,7 +26,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
     // Validate request data
     const validated = ProjectOnboardingSchema.safeParse(data)
     if (!validated.success) {
-      return createResponse({ error: validated.error.errors }, 400)
+      return createResponse({ error: validated.error }, 400)
     }
 
     const project = await prisma.projectOnboarding.update({

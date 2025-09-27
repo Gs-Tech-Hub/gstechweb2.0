@@ -4,46 +4,72 @@ import { useRouter } from "next/navigation"
 import { PopUpMessage, Loader } from '@/AllFiles';
 import { useGeneralContext } from '@/context/GlobalContext'
 import { displayPopUpMessage, cancelPopUP } from '@/helper function/pop up';
-
+import { blogApi } from '@/lib/utils/api';
 
 const CreateBlog = () => {
     const router = useRouter()
     const userData = useGeneralContext()
     const { blogC, blogTagLineC, blogTitleC, editBlogC, userName } = userData
-    const [selectFile, setselectFile] = useState('Browse File')
     const [displayPopUp, setdisplayPopUp] = useState(false)
-    const [popUpMsg, setpopUpMsg] = useState('campaign successfully deleted')
+    const [popUpMsg, setpopUpMsg] = useState('')
     const [popUpType, setpopUpType] = useState('')
     const [loading, setloading] = useState(false)
+    const [imageUrl, setImageUrl] = useState('')
 
     const [blogTitle, setblogTitle] = useState('')
     const [blog, setblog] = useState('')
-    const [blogTagLine, setblogTagLine] = useState()
+    const [blogTagLine, setblogTagLine] = useState('')
     let isAuthenticated = false
 
     useEffect(() => {
-        if (editBlogC) {
+        if (editBlogC && blogC) {
             setblogTitle(blogTitleC)
             setblog(blogC)
             setblogTagLine(blogTagLineC)
         }
-    }, [])
+    }, [editBlogC, blogC, blogTitleC, blogTagLineC])
+
     useEffect(() => {
         if (userName === '') router.push('/Admin')
         else isAuthenticated = true
-
     }, [router, userName])
-    const handleButton = (e) => {
-        setloading(true)
+
+    const handleButton = async (e) => {
         e.preventDefault()
-        if (blogTitle === '') {
-            displayPopUpMessage('fill in all required fields', setpopUpMsg, setpopUpType, setdisplayPopUp, false)
-            cancelPopUP(setdisplayPopUp, 1000)
+        setloading(true)
+
+        if (!blogTitle || !blog || !imageUrl) {
+            displayPopUpMessage('Please fill in all required fields', setpopUpMsg, setpopUpType, setdisplayPopUp, false)
+            cancelPopUP(setdisplayPopUp, 2000)
             setloading(false)
-        } else {
+            return
+        }
+
+        try {
+            const blogData = {
+                title: blogTitle,
+                content: blog,
+                imageUrl: imageUrl,
+                author: userName,
+                tagLine: blogTagLine
+            }
+
+            if (editBlogC) {
+                await blogApi.update(blogC.id, blogData)
+                displayPopUpMessage('Blog successfully updated', setpopUpMsg, setpopUpType, setdisplayPopUp, true)
+            } else {
+                await blogApi.create(blogData)
+                displayPopUpMessage('Blog successfully created', setpopUpMsg, setpopUpType, setdisplayPopUp, true)
+            }
+
+            cancelPopUP(setdisplayPopUp, 2000)
+            router.push('/Admin/AllBlogs')
+        } catch (error) {
+            console.error('Failed to save blog:', error)
+            displayPopUpMessage('Failed to save blog. Please try again.', setpopUpMsg, setpopUpType, setdisplayPopUp, false)
+            cancelPopUP(setdisplayPopUp, 2000)
+        } finally {
             setloading(false)
-            displayPopUpMessage('blog successfully created', setpopUpMsg, setpopUpType, setdisplayPopUp, true)
-            cancelPopUP(setdisplayPopUp, 1000)
         }
 
     }

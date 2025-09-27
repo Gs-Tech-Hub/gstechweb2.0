@@ -1,8 +1,8 @@
 "use client"
 import { useState } from 'react'
 import Link from "next/link"
-import { PopUpMessage } from '@/AllFiles';
-import { displayPopUpMessage, cancelPopUP } from '@/helper function/pop up';
+import { PopUpMessage } from '@/components/PopUpMessage';
+import { displayPopUpMessage, cancelPopUP } from '@/helperFunction/pop up';
 
 
 const Footer = () => {
@@ -44,8 +44,8 @@ const Footer = () => {
                 </div>
                 <div className='max-[839px]:w-[40%] max-[839px]:mb-[2rem] max-[740px]:w-[47%]'>
                     <h2 className='font-bold text-[1.36rem] text-[white] mb-[0.3rem]'>Services</h2>
-                    <p>WP Development</p>
-                    <p>UX Research</p>
+                    <p>Mobile-App Development</p>
+                    <p>Mangement Software</p>
                     <p>Branding Design</p>
                     <p>Front-End Development</p>
                     <p>Graphics Design</p>
