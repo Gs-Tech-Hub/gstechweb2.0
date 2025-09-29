@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
-import { validatePortfolioData } from '@/lib/utils/validation';
+import { prisma } from '../../../../lib/prisma';
+import { validatePortfolioData } from '../../../../lib/utils/validation';
 
 interface RouteParams {
   params: {
@@ -45,9 +45,11 @@ export async function PUT(request: Request, { params }: RouteParams) {
       data: {
         title: data.title,
         description: data.description,
-        technologies: data.technologies,
-        imageUrl: data.imageUrl,
+        image: data.imageUrl,
         projectUrl: data.projectUrl,
+        clientName: data.clientName,
+
+        
         updatedAt: new Date()
       }
     });

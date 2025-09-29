@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
-import { validateBlogData } from '@/lib/utils/validation';
+import { prisma } from '../../../../lib/prisma';
+import { validateBlogData } from '../../../../lib/utils/validation';
 
 interface RouteParams {
   params: {
@@ -11,7 +11,7 @@ interface RouteParams {
 // GET /api/blogs/[id] - Get a specific blog
 export async function GET(request: Request, { params }: RouteParams) {
   try {
-    const blog = await prisma.blog.findUnique({
+    const blog = await prisma.post.findUnique({
       where: {
         id: params.id
       }
@@ -38,7 +38,7 @@ export async function PUT(request: Request, { params }: RouteParams) {
       return NextResponse.json({ error: validationError }, { status: 400 });
     }
 
-    const blog = await prisma.blog.update({
+    const blog = await prisma.post.update({
       where: {
         id: params.id
       },
@@ -46,7 +46,7 @@ export async function PUT(request: Request, { params }: RouteParams) {
         title: data.title,
         content: data.content,
         author: data.author,
-        imageUrl: data.imageUrl,
+        image: data.imageUrl,
         updatedAt: new Date()
       }
     });
@@ -60,7 +60,7 @@ export async function PUT(request: Request, { params }: RouteParams) {
 // DELETE /api/blogs/[id] - Delete a blog
 export async function DELETE(request: Request, { params }: RouteParams) {
   try {
-    await prisma.blog.delete({
+    await prisma.post.delete({
       where: {
         id: params.id
       }

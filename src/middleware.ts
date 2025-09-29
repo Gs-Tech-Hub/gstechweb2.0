@@ -21,18 +21,19 @@ export async function middleware(request: NextRequest) {
     '/api/auth/login',
     '/api/auth/register',
     '/api/blogs',
-    '/api/portfolio'
+    '/api/portfolio',
+    '/api/project-onboarding'
   ];
 
-  // Check if it's a GET request to public API endpoints
-  if (publicApiPaths.includes(pathname) && request.method === 'GET') {
+  // Check if it's a request to public API endpoints (allow all methods)
+  if (publicApiPaths.includes(pathname)) {
     return NextResponse.next();
   }
 
   // Check if it's an admin route or protected API route
   const isAdminRoute = pathname.startsWith('/Admin');
   const isProtectedApiRoute = pathname.startsWith('/api/') &&
-    (!publicApiPaths.includes(pathname) || request.method !== 'GET');
+    !publicApiPaths.includes(pathname);
 
   if (isAdminRoute || isProtectedApiRoute) {
     // Get token from Authorization header

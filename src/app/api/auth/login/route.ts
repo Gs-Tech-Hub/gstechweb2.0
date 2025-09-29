@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
-import { validateLoginData } from '@/lib/utils/validation';
-import { generateToken } from '@/lib/utils/auth';
+import { prisma } from '../../../../lib/prisma';
+import { validateLoginData } from '../../../../lib/utils/validation';
+import { generateToken } from '../../../../lib/utils/auth';
 import { cookies } from 'next/headers';
 import bcrypt from 'bcryptjs';
 

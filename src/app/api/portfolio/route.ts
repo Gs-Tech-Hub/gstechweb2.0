@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
-import { validatePortfolioData } from '@/lib/utils/validation';
+import { prisma } from '../../../lib/prisma';
+import { validatePortfolioData } from '../../../lib/utils/validation';
 
 // GET /api/portfolio - Get all portfolio items
 export async function GET() {
@@ -31,9 +31,9 @@ export async function POST(request: Request) {
       data: {
         title: data.title,
         description: data.description,
-        technologies: data.technologies,
-        imageUrl: data.imageUrl,
+        image: data.imageUrl,
         projectUrl: data.projectUrl,
+        category: data.category,
       }
     });
 

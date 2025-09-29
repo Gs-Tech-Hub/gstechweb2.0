@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server'
-import { prisma } from '@/lib/prisma'
-import { createResponse } from '@/lib/utils/auth'
-import { ProjectOnboardingSchema } from '@/lib/utils/validation'
+import { prisma } from '../../../../lib/prisma'
+import { createResponse } from '../../../../lib/utils/auth'
+import { ProjectOnboardingSchema } from '../../../../lib/utils/validation'
 
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
   try {

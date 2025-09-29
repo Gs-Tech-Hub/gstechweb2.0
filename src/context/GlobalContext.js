@@ -9,10 +9,31 @@ export const GlobalContext = ({ children }) => {
     const [blogC, setblogC] = useState('')
     const [blogTagLineC, setblogTagLineC] = useState()
     const [editBlogC, seteditBlogC] = useState(false)
+    const [popUpMessage, setPopUpMessage] = useState('')
+    const [popUpType, setPopUpType] = useState('success')
+    const [displayPopUp, setDisplayPopUp] = useState(false)
+
+    const showPopUp = (message, type = 'success') => {
+        setPopUpMessage(message)
+        setPopUpType(type)
+        setDisplayPopUp(true)
+        setTimeout(() => setDisplayPopUp(false), 3000)
+    }
 
 
     return (
-        <Context.Provider value={{ id, setid, userName, setuserName, blogTitleC, setblogTitleC, blogC, setblogC, blogTagLineC, setblogTagLineC, editBlogC, seteditBlogC }}>
+        <Context.Provider value={{
+            id, setid,
+            userName, setuserName,
+            blogTitleC, setblogTitleC,
+            blogC, setblogC,
+            blogTagLineC, setblogTagLineC,
+            editBlogC, seteditBlogC,
+            showPopUp,
+            popUpMessage,
+            popUpType,
+            displayPopUp
+        }}>
             {children}
         </Context.Provider>
     )

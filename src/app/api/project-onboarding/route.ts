@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server'
-import { prisma } from '@/lib/prisma'
-import { createResponse } from '@/lib/utils/auth'
-import { ProjectOnboardingSchema } from '@/lib/utils/validation'
+import { prisma } from '../../../lib/prisma'
+import { createResponse } from '../../../lib/utils/auth'
+import { ProjectOnboardingSchema } from '../../../lib/utils/validation'
 
 export async function GET() {
   try {
@@ -16,6 +16,7 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
   try {
+    // Project onboarding form submission should be allowed without authentication
     const data = await req.json()
     
     // Validate request data
