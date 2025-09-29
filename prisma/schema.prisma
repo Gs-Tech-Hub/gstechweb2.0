@@ -1,0 +1,101 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("user")
+}
+
+model ProjectOnboarding {
+  id            String   @id @default(cuid())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  companyName   String
+  contactPerson String
+  email         String
+  phone         String?
+  projectType   String
+  requirements  String
+  budget        Float?
+  timeline      String?
+  status        String   @default("pending")
+  notes         String?
+}
+
+model Post {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String
+  content   String   @db.Text
+  image     String?
+  slug      String   @unique
+  published Boolean  @default(false)
+  author    String
+  tags      String[]
+}
+
+model Contact {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  name      String
+  email     String
+  phone     String?
+  message   String
+  status    String   @default("unread")
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  title       String
+  description String
+  icon        String?
+  features    String[]
+  pricing     Pricing[]
+}
+
+model Pricing {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  name        String
+  price       Float
+  features    String[]
+  serviceId   String
+  service     Service  @relation(fields: [serviceId], references: [id])
+}
+
+model FunFact {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String
+  value     Int
+  icon      String?
+}
+
+model Portfolio {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  title       String
+  description String
+  image       String
+  category    String
+  clientName  String?
+  projectUrl  String?
+  tags        String[]
+}
