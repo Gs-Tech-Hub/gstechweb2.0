@@ -31,7 +31,7 @@ const Footer = () => {
                 <div className='max-[839px]:w-[40%] max-[839px]:mb-[2rem] max-[740px]:w-[47%]'>
                     <div className='w-[7.5rem] h-[fit-content]'><img src='/images/GsTechLogo.png' alt="" /></div>
                     <p>+234 815 561 9895</p>
-                    <p>+44 7425 199941</p>
+                    <p>+234 815 561 9895</p>
                     <p>info@gstechhub.com.ng</p>
                 </div>
                 <div className='max-[839px]:w-[40%] max-[839px]:mb-[2rem] max-[740px]:w-[47%]'>

@@ -1,4 +1,6 @@
 import { GlobalContext } from "../context/GlobalContext";
+import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 import "./globals.css";
 
 
@@ -33,7 +35,11 @@ export default function RootLayout({ children }) {
 
       <body>
         <GlobalContext>
-          {children}
+          <Nav />
+          <main>
+            {children}
+          </main>
+          <Footer />
         </GlobalContext>
       </body>
     </html>

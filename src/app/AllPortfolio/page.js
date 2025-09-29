@@ -1,5 +1,5 @@
 import { PortfolioCard } from "../../AllFiles"
-import { portfolioApi } from '@/lib/utils/api'
+import { portfolioApi } from '../../lib/utils/api'
 
 async function getAllPortfolioItems() {
   try {
