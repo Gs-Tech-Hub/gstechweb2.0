@@ -1,7 +1,8 @@
 "use client"
 import { useState, useEffect } from 'react'
 import { useRouter } from "next/navigation"
-import { PopUpMessage, Loader } from '@/AllFiles';
+import { PopUpMessage } from '@/AllFiles';
+import Loader from '@/components/Loader';
 import { useGeneralContext } from '@/context/GlobalContext'
 import { displayPopUpMessage, cancelPopUP } from '@/helper function/pop up';
 import { blogApi } from '@/lib/utils/api';

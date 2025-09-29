@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react'
 import { use } from 'react';
 import { useRouter } from "next/navigation"
 import { BiSolidEditAlt } from 'react-icons/bi';
-import { ModalComponent, PopUpMessage, Loader } from '@/AllFiles';
+import { ModalComponent, PopUpMessage } from '@/AllFiles';
+import Loader from '@/components/Loader';
 import { displayPopUpMessage, cancelPopUP } from '@/helper function/pop up';
 import { useGeneralContext } from '@/context/GlobalContext'
 

@@ -6,7 +6,7 @@ export const useTawkTo = () => {
         (function () {
             var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
             s1.async = true;
-            Property_ID
+            // Property_ID
             s1.src = `https://embed.tawk.to/${process.env.Property_ID}/${process.env.Secrete}`;
             s1.charset = 'UTF-8';
             s1.setAttribute('crossorigin', '*');

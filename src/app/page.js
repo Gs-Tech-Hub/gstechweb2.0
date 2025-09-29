@@ -1,6 +1,16 @@
 'use client'
-import { useTawkTo } from "@/helperFunction/useTawkTo";
-import { Nav, HeroSection, MileStone, Tawk, About, Services, Testimonial, Pricing, Footer, OurProcess, CallToAction } from "../AllFiles"
+import { useTawkTo } from "../helperFunction/useTawkTo";
+import  Nav from "../components/Nav" 
+import HeroSection from "../components/HeroSection";
+import MileStone from "../components/MileStone";
+import Tawk from "../components/Tawk";
+import About from "../components/About"
+import Services from "../components/Services";
+import Testimonial from "../components/Testimonial";
+import Pricing from "../components/Pricing";
+import Footer from "../components/Footer";
+import OurProcess from "../components/OurProcess";
+import CallToAction from "../components/CallToAction"; 
 
 
 export default function Home() {

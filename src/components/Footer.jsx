@@ -1,8 +1,8 @@
 "use client"
 import { useState } from 'react'
 import Link from "next/link"
-import { PopUpMessage } from '@/components/PopUpMessage';
-import { displayPopUpMessage, cancelPopUP } from '@/helperFunction/popUp';
+import PopUpMessage  from '../components/PopUpMessage';
+import { displayPopUpMessage, cancelPopUP } from '../helperFunction/popUp';
 
 
 const Footer = () => {

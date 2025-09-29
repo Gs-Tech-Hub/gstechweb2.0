@@ -1,4 +1,4 @@
-import { GlobalContext } from "@/context/GlobalContext";
+import { GlobalContext } from "../context/GlobalContext";
 import "./globals.css";
 
 

@@ -1,5 +1,6 @@
 "use client"
-import { BlogCard, Loader } from "../../../AllFiles"
+import { BlogCard } from "../../../AllFiles";
+import Loader from '@/components/Loader';
 import { useGeneralContext } from '@/context/GlobalContext'
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
