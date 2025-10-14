@@ -8,9 +8,10 @@ import bcrypt from 'bcryptjs';
 export async function POST(request: Request) {
   try {
     const data = await request.json();
-    
+
     // Validate login data
     const validationError = validateLoginData(data);
+    console.log(validationError, 'validationError')
     if (validationError) {
       return NextResponse.json({ error: validationError }, { status: 400 });
     }

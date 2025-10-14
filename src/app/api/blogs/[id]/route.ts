@@ -29,18 +29,20 @@ export async function GET(request: Request, { params }: RouteParams) {
 
 // PUT /api/blogs/[id] - Update a blog
 export async function PUT(request: Request, { params }: RouteParams) {
+  console.log(params)
   try {
     const data = await request.json();
-    
+
     // Validate blog data
     const validationError = validateBlogData(data);
+    console.log(validationError, 'validationError')
     if (validationError) {
       return NextResponse.json({ error: validationError }, { status: 400 });
     }
 
     const blog = await prisma.post.update({
       where: {
-        id: params.id
+        id: params?.id
       },
       data: {
         title: data.title,
@@ -53,6 +55,7 @@ export async function PUT(request: Request, { params }: RouteParams) {
 
     return NextResponse.json(blog);
   } catch (error) {
+    console.log(error, 'blog error')
     return NextResponse.json({ error: 'Failed to update blog' }, { status: 500 });
   }
 }
@@ -68,6 +71,8 @@ export async function DELETE(request: Request, { params }: RouteParams) {
 
     return new NextResponse(null, { status: 204 });
   } catch (error) {
+    console.log(error?.message, 'blog error')
+
     return NextResponse.json({ error: 'Failed to delete blog' }, { status: 500 });
   }
 }

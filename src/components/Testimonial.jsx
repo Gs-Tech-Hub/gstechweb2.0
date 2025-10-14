@@ -45,7 +45,7 @@ function Testimonial() {
         prevArrow: <SamplePrevArrow />
     };
     return (
-        <div className=" py-[1rem] pb-[3rem] px-[1rem] ">
+        <div className="secondaryBgColor py-[1rem] pb-[3rem] px-[1rem] ">
             <h1 className='font-bold text-[1.8rem] text-center mb-[3rem] max-[1173px]:mb-[1.5rem]'>Testimonials </h1>
             <div className="w-[80%] mx-[auto] max-[1273px]:w-[93%] max-[1273px]:mx-[auto]">
                 <Slider {...settings}>

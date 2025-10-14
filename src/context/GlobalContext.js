@@ -7,6 +7,7 @@ export const GlobalContext = ({ children }) => {
     const [userName, setuserName] = useState('')
     const [blogTitleC, setblogTitleC] = useState('')
     const [blogC, setblogC] = useState('')
+    const [blogIdC, setblogIdC] = useState('')
     const [blogTagLineC, setblogTagLineC] = useState()
     const [editBlogC, seteditBlogC] = useState(false)
     const [popUpMessage, setPopUpMessage] = useState('')
@@ -27,6 +28,7 @@ export const GlobalContext = ({ children }) => {
             userName, setuserName,
             blogTitleC, setblogTitleC,
             blogC, setblogC,
+            blogIdC, setblogIdC,
             blogTagLineC, setblogTagLineC,
             editBlogC, seteditBlogC,
             showPopUp,

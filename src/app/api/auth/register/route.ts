@@ -1,12 +1,14 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
-import { validateRegisterData } from '@/lib/utils/validation';
+// import { prisma } from '@/lib/prisma';
+// import { validateRegisterData } from '@/lib/utils/validation';
+import { prisma } from '../../../../lib/prisma';
+import { validateRegisterData } from '../../../../lib/utils/validation';
 import bcrypt from 'bcryptjs';
 
 export async function POST(request: Request) {
   try {
     const data = await request.json();
-    
+
     // Validate registration data
     const validationError = validateRegisterData(data);
     if (validationError) {

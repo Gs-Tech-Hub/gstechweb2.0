@@ -14,8 +14,10 @@ export const RegisterSchema = z.object({
 
 export function validateLoginData(data: any): string | null {
   const result = LoginSchema.safeParse(data);
+
   if (!result.success) {
-    return result.error[0].message;
+    console.log(result.error.issues[0].message)
+    return result.error.issues[0].message;
   }
   return null;
 }
@@ -23,7 +25,8 @@ export function validateLoginData(data: any): string | null {
 export function validateRegisterData(data: any): string | null {
   const result = RegisterSchema.safeParse(data);
   if (!result.success) {
-    return result.error[0].message;
+    console.log(result.error.issues[0].message)
+    return result.error.issues[0].message;
   }
   return null;
 }
@@ -42,8 +45,8 @@ export const ProjectOnboardingSchema = z.object({
 
 export const BlogSchema = z.object({
   title: z.string().min(3, 'Title must be at least 3 characters long'),
-  content: z.string().min(10, 'Content must be at least 10 characters long'),
-  imageUrl: z.string().min(1, 'Image URL is required'),
+  content: z.string().min(10, 'Blog must be at least 10 characters long'),
+  image: z.string().min(1, 'Image URL is required'),
   author: z.string().min(1, 'Author is required'),
   tags: z.array(z.string()).optional()
 })
@@ -52,8 +55,9 @@ export const BlogSchema = z.object({
 
 export function validateBlogData(data: any): string | null {
   const result = BlogSchema.safeParse(data);
+  console.log(result)
   if (!result.success) {
-    return result.error[0].message;
+    return result.error.issues[0].message;
   }
   return null;
 }

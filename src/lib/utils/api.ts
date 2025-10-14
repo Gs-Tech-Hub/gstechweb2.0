@@ -4,15 +4,23 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '';
 // Helper function to handle API responses
 async function handleResponse(response: Response) {
   const data = await response.json();
-  
+
   if (!response.ok) {
-    throw new Error(data.error || 'Something went wrong');
+    return {
+      status: false,
+      message: data.error || 'Something went wrong'
+    }
+  } else {
+    return {
+      status: true,
+      message: data
+    }
   }
-  
-  return data;
+
 }
 
 // Function to get auth headers
+// local storage was never set
 function getAuthHeaders() {
   const token = localStorage.getItem('authToken');
   return {
@@ -57,10 +65,36 @@ export const blogApi = {
       headers: getAuthHeaders(),
     });
     if (response.status === 204) {
-      return true;
+      return {
+        status: true,
+        message: 'blog successfully deleted'
+      }
     }
     return handleResponse(response);
   },
+};
+
+// Project-Onboarding API functions
+export const projectOnboardingApi = {
+  getAll: async () => {
+    const response = await fetch(`${API_BASE_URL}/api/project-onboarding`);
+    return handleResponse(response);
+  },
+
+  getById: async (id: string) => {
+    const response = await fetch(`${API_BASE_URL}/api/project-onboarding/${id}`);
+    return handleResponse(response);
+  },
+
+  create: async (data: any) => {
+    const response = await fetch(`${API_BASE_URL}/api/project-onboarding`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    return handleResponse(response);
+  },
+
 };
 
 // Portfolio API functions

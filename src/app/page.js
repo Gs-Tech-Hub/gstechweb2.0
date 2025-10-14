@@ -7,10 +7,11 @@ import Tawk from "../components/Tawk";
 import About from "../components/About"
 import Services from "../components/Services";
 import Testimonial from "../components/Testimonial";
+import Contact from "../components/Contact";
 // import Pricing from "../components/Pricing";
 // import Footer from "../components/Footer";
 import OurProcess from "../components/OurProcess";
-import CallToAction from "../components/CallToAction"; 
+import CallToAction from "../components/CallToAction";
 
 
 export default function Home() {
@@ -27,6 +28,7 @@ export default function Home() {
       <Services />
       {/* <Pricing /> */}
       <Testimonial />
+      <Contact />
       <OurProcess />
       <CallToAction />
       {/* <Footer /> */}

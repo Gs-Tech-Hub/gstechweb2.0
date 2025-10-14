@@ -1,8 +1,8 @@
 'use client';
-
 import ProjectOnboardingForm from '../../components/ProjectOnboardingForm';
 
 export default function ProjectOnboarding() {
+
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -14,9 +14,8 @@ export default function ProjectOnboarding() {
             Tell us about your project and let&apos;s bring your vision to life.
           </p>
         </div>
-        
         <ProjectOnboardingForm />
-        
+
         <div className="mt-12 text-center">
           <p className="text-sm text-gray-500">
             Need help or have questions? Contact us at{' '}

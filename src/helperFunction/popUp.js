@@ -9,3 +9,8 @@ export const cancelPopUP = (setdisplayPopUp, duration) => {
         setdisplayPopUp(false)
     }, duration)
 }
+
+export const handleResponse = (message, status, setpopUpMsg, setpopUpType, setdisplayPopUp) => {
+    displayPopUpMessage(message, setpopUpMsg, setpopUpType, setdisplayPopUp, status)
+    cancelPopUP(setdisplayPopUp, 1000)
+}

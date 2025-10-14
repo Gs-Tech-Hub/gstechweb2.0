@@ -1,11 +1,14 @@
 'use client';
-
 import { useState } from 'react';
 import { ProjectOnboardingSchema } from '../lib/utils/validation';
-import { useGeneralContext } from '../context/GlobalContext';
+import PopUpMessage from './PopUpMessage';
+import { handleResponse } from '../helperFunction/popUp';
+
 
 const ProjectOnboardingForm = () => {
-  const { showPopUp } = useGeneralContext();
+  const [displayPopUp, setdisplayPopUp] = useState(false)
+  const [popUpMsg, setpopUpMsg] = useState('')
+  const [popUpType, setpopUpType] = useState('')
   const [formData, setFormData] = useState({
     companyName: '',
     contactPerson: '',
@@ -13,7 +16,7 @@ const ProjectOnboardingForm = () => {
     phone: '',
     projectType: '',
     requirements: '',
-    budget: '',
+    budget: 0,
     timeline: '',
     notes: ''
   });
@@ -31,12 +34,15 @@ const ProjectOnboardingForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
     try {
+      if (formData.companyName === '' || formData.projectType === '' || formData.requirements === '' || formData.email === '') {
+        handleResponse('fill in all required fields', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
+        return;
+      }
       const validated = ProjectOnboardingSchema.safeParse(formData);
-      
+
       if (!validated.success) {
-        showPopUp(validated.error.errors[0].message, 'error');
+        handleResponse(validated.error.errors[0].message || 'an error occured', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
         return;
       }
 
@@ -49,25 +55,25 @@ const ProjectOnboardingForm = () => {
       });
 
       const data = await response.json();
-
+      console.log(response)
       if (!response.ok) {
-        throw new Error(data.error || 'Something went wrong');
+        handleResponse(data?.error || 'an error occured', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
+      } else {
+        handleResponse('Project onboarding submitted successfully!', true, setpopUpMsg, setpopUpType, setdisplayPopUp)
+        setFormData({
+          companyName: '',
+          contactPerson: '',
+          email: '',
+          phone: '',
+          projectType: '',
+          requirements: '',
+          budget: 0,
+          timeline: '',
+          notes: ''
+        });
       }
-
-      showPopUp('Project onboarding submitted successfully!', 'success');
-      setFormData({
-        companyName: '',
-        contactPerson: '',
-        email: '',
-        phone: '',
-        projectType: '',
-        requirements: '',
-        budget: '',
-        timeline: '',
-        notes: ''
-      });
     } catch (error) {
-      showPopUp(error.message, 'error');
+      handleResponse(error?.message || 'an error occured, try again later', true, setpopUpMsg, setpopUpType, setdisplayPopUp)
     } finally {
       setLoading(false);
     }
@@ -95,8 +101,7 @@ const ProjectOnboardingForm = () => {
             name="companyName"
             value={formData.companyName}
             onChange={handleChange}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-            required
+            className='mt-2 outline-none pl-[0.755em]  py-[0.4rem] w-[100%] border-[1px] border-[#d8d5d5] rounded-md '
           />
         </div>
 
@@ -110,8 +115,9 @@ const ProjectOnboardingForm = () => {
             name="contactPerson"
             value={formData.contactPerson}
             onChange={handleChange}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-            required
+            // className="mt-2 block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
+            className='mt-2 outline-none pl-[0.755em]  py-[0.4rem] w-[100%] border-[1px] border-[#d8d5d5] rounded-md '
+          // required
           />
         </div>
 
@@ -125,8 +131,8 @@ const ProjectOnboardingForm = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-            required
+            className='mt-2 outline-none pl-[0.755em]  py-[0.4rem] w-[100%] border-[1px] border-[#d8d5d5] rounded-md '
+          // required
           />
         </div>
 
@@ -140,7 +146,7 @@ const ProjectOnboardingForm = () => {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+            className='mt-2 outline-none pl-[0.755em]  py-[0.4rem] w-[100%] border-[1px] border-[#d8d5d5] rounded-md '
           />
         </div>
 
@@ -153,8 +159,8 @@ const ProjectOnboardingForm = () => {
             name="projectType"
             value={formData.projectType}
             onChange={handleChange}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-            required
+            className='mt-2 outline-none pl-[0.755em]  py-[0.4rem] w-[100%] border-[1px] border-[#d8d5d5] rounded-md '
+          // required
           >
             <option value="">Select a project type</option>
             {projectTypes.map(type => (
@@ -168,12 +174,12 @@ const ProjectOnboardingForm = () => {
             Budget (USD)
           </label>
           <input
-            type="number"
+            type="tel"
             id="budget"
             name="budget"
             value={formData.budget}
             onChange={handleChange}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+            className='mt-2 outline-none pl-[0.755em]  py-[0.4rem] w-[100%] border-[1px] border-[#d8d5d5] rounded-md '
             min="0"
             step="1000"
           />
@@ -190,8 +196,8 @@ const ProjectOnboardingForm = () => {
           value={formData.requirements}
           onChange={handleChange}
           rows={4}
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-          required
+          className='mt-2 outline-none pl-[0.755em]  py-[0.4rem] w-[100%] border-[1px] border-[#d8d5d5] rounded-md '
+
         />
       </div>
 
@@ -206,7 +212,8 @@ const ProjectOnboardingForm = () => {
           value={formData.timeline}
           onChange={handleChange}
           placeholder="e.g., 3 months, Q4 2025"
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+          className='mt-2 outline-none pl-[0.755em]  py-[0.4rem] w-[100%] border-[1px] border-[#d8d5d5] rounded-md '
+
         />
       </div>
 
@@ -220,7 +227,7 @@ const ProjectOnboardingForm = () => {
           value={formData.notes}
           onChange={handleChange}
           rows={3}
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+          className='mt-2 outline-none pl-[0.755em]  py-[0.4rem] w-[100%] border-[1px] border-[#d8d5d5] rounded-md '
         />
       </div>
 
@@ -228,13 +235,14 @@ const ProjectOnboardingForm = () => {
         <button
           type="submit"
           disabled={loading}
-          className={`px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ${
-            loading ? 'opacity-50 cursor-not-allowed' : ''
-          }`}
+          className={`px-4 py-2 cursor-pointer primaryColor font-bold text-white rounded-md focus:outline-none   focus:ring-offset-2 ${loading ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
         >
           {loading ? 'Submitting...' : 'Submit Project'}
         </button>
       </div>
+      <PopUpMessage popUpMsg={popUpMsg} displayPopUp={displayPopUp} type={popUpType} duration={3000} />
+
     </form>
   );
 };

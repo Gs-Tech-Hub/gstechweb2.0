@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
-import { validateBlogData } from '@/lib/utils/validation';
+import { prisma } from '../../../lib/prisma';
+import { validateBlogData } from '../../../lib/utils/validation';
 
 // GET /api/blogs - Get all blogs
 export async function GET() {
   try {
-    const blogs = await prisma.blog.findMany({
+    const blogs = await prisma.post.findMany({
       orderBy: {
         createdAt: 'desc'
       }
@@ -20,24 +20,27 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const data = await request.json();
-    
+    console.log(data)
     // Validate blog data
     const validationError = validateBlogData(data);
     if (validationError) {
       return NextResponse.json({ error: validationError }, { status: 400 });
     }
 
-    const blog = await prisma.blog.create({
+    const blog = await prisma.post.create({
       data: {
         title: data.title,
         content: data.content,
         author: data.author,
-        imageUrl: data.imageUrl,
+        image: data.imageUrl,
+        slug: '77m',
+        tags: data.tagLine
       }
     });
 
     return NextResponse.json(blog, { status: 201 });
   } catch (error) {
+    console.log(error?.message, 'error message')
     return NextResponse.json({ error: 'Failed to create blog' }, { status: 500 });
   }
 }
