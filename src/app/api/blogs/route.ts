@@ -33,7 +33,7 @@ export async function POST(request: Request) {
         content: data.content,
         author: data.author,
         image: data.imageUrl,
-        slug: '77m',
+        slug: data.slug,
         tags: data.tagLine
       }
     });

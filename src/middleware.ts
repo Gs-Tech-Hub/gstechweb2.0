@@ -54,7 +54,10 @@ export async function middleware(request: NextRequest) {
         }
         return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
       } else {
-        // added this to the middleware to allow admin view route if there is a token in the cookie
+        // added this to the middleware to allow the routes to be accessed if there is a token in the cookie
+
+        /*i thought the middleware would stop if there a token in the cookie because of the return statement 
+        but it moves down to the try catch statement even when theres a token in the cookie regardless of the return statement */
         return NextResponse.next();
       }
     }

@@ -25,22 +25,25 @@ const ProjectOnboardingForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(name, value)
     setFormData(prev => ({
       ...prev,
       [name]: name === 'budget' ? parseFloat(value) || '' : value
+      // [name]: value
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    console.log(formData)
     try {
       if (formData.companyName === '' || formData.projectType === '' || formData.requirements === '' || formData.email === '') {
         handleResponse('fill in all required fields', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
         return;
       }
       const validated = ProjectOnboardingSchema.safeParse(formData);
-
+      console.log(validated)
       if (!validated.success) {
         handleResponse(validated.error.errors[0].message || 'an error occured', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
         return;
@@ -93,7 +96,7 @@ const ProjectOnboardingForm = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label htmlFor="companyName" className="block text-sm font-medium text-gray-700">
-            Company Name *
+            Company Name <b className='text-[red]'>*</b>
           </label>
           <input
             type="text"
@@ -107,7 +110,7 @@ const ProjectOnboardingForm = () => {
 
         <div>
           <label htmlFor="contactPerson" className="block text-sm font-medium text-gray-700">
-            Contact Person *
+            Contact Person <b className='text-[red]'>*</b>
           </label>
           <input
             type="text"
@@ -123,7 +126,7 @@ const ProjectOnboardingForm = () => {
 
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-            Email *
+            Email <b className='text-[red]'>*</b>
           </label>
           <input
             type="email"
@@ -152,7 +155,7 @@ const ProjectOnboardingForm = () => {
 
         <div>
           <label htmlFor="projectType" className="block text-sm font-medium text-gray-700">
-            Project Type *
+            Project Type <b className='text-[red]'>*</b>
           </label>
           <select
             id="projectType"
@@ -188,7 +191,7 @@ const ProjectOnboardingForm = () => {
 
       <div>
         <label htmlFor="requirements" className="block text-sm font-medium text-gray-700">
-          Project Requirements *
+          Project Requirements <b className='text-[red]'>*</b>
         </label>
         <textarea
           id="requirements"

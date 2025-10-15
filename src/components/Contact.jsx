@@ -20,6 +20,7 @@ const Contact = () => {
     const handleButton = async (e) => {
         setloading(true)
         e.preventDefault()
+
         try {
             if (email === '' || name === '' || message === '') handleResponse('fill in all required fields', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
             else {

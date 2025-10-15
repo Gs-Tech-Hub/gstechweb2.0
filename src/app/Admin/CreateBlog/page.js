@@ -1,5 +1,6 @@
 "use client"
 import { useState, useEffect } from 'react'
+import slugify from 'slugify';
 import { useRouter } from "next/navigation"
 import PopUpMessage from '../../../components/PopUpMessage';
 import Loader from '../../../components/Loader';
@@ -21,6 +22,7 @@ const CreateBlog = () => {
 
     const [blogTitle, setblogTitle] = useState('')
     const [blog, setblog] = useState('')
+    const [blogSlug, setblogSlug] = useState('')
     const [blogTagLine, setblogTagLine] = useState(['lll'])
     const [isAuthenticated, setisAuthenticated] = useState(false)
 
@@ -65,12 +67,14 @@ const CreateBlog = () => {
                 handleResponse('Please fill in all required fields', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
                 return
             }
+            setblogSlug(slugify(blogTitle, { lower: true }))
             const blogData = {
                 title: blogTitle,
                 content: blog,
                 image: imageUrl,
                 author: userName,
-                tagLine: blogTagLine
+                tagLine: blogTagLine,
+                slug: blogSlug
             }
 
             if (editBlogC) {

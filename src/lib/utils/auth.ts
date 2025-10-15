@@ -27,7 +27,6 @@ export const generateToken = (payload: TokenPayload): string => {
     expiresIn: JWT_EXPIRES_IN as StringValue
   });
 };
-
 export const getAuthToken = async (): Promise<string | null> => {
   const cookieStore = await cookies();
   const token = cookieStore.get(process.env.COOKIE_NAME || 'gstech_auth');
