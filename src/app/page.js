@@ -3,7 +3,6 @@ import { useTawkTo } from "../helperFunction/useTawkTo";
 // import  Nav from "../components/Nav" 
 import HeroSection from "../components/HeroSection";
 import MileStone from "../components/MileStone";
-import Tawk from "../components/Tawk";
 import About from "../components/About"
 import Services from "../components/Services";
 import Testimonial from "../components/Testimonial";
@@ -21,7 +20,6 @@ export default function Home() {
   return (
     <div>
       {/* <Nav /> */}
-      <Tawk />
       <HeroSection />
       <MileStone />
       <About />
