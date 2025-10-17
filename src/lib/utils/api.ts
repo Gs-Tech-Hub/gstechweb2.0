@@ -22,11 +22,21 @@ async function handleResponse(response: Response) {
 // Function to get auth headers
 // local storage was never set
 function getAuthHeaders() {
-  const token = localStorage.getItem('authToken');
-  return {
-    'Authorization': `Bearer ${token}`,
+  // localStorage is only available in the browser. Guard access for SSR.
+  let token: string | null = null;
+  if (typeof window !== 'undefined' && window.localStorage) {
+    token = localStorage.getItem('authToken');
+  }
+
+  const headers: Record<string, string> = {
     'Content-Type': 'application/json',
   };
+
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
+
+  return headers;
 }
 
 // Blog API functions
@@ -45,6 +55,7 @@ export const blogApi = {
     const response = await fetch(`${API_BASE_URL}/api/blogs`, {
       method: 'POST',
       headers: getAuthHeaders(),
+      credentials: 'include',
       body: JSON.stringify(data),
     });
     return handleResponse(response);
@@ -54,6 +65,7 @@ export const blogApi = {
     const response = await fetch(`${API_BASE_URL}/api/blogs/${id}`, {
       method: 'PUT',
       headers: getAuthHeaders(),
+      credentials: 'include',
       body: JSON.stringify(data),
     });
     return handleResponse(response);
@@ -63,6 +75,7 @@ export const blogApi = {
     const response = await fetch(`${API_BASE_URL}/api/blogs/${id}`, {
       method: 'DELETE',
       headers: getAuthHeaders(),
+      credentials: 'include',
     });
     if (response.status === 204) {
       return {

@@ -34,6 +34,8 @@ const AdminLogin = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                // include credentials so that httpOnly cookie set by server is stored
+                credentials: 'include',
                 body: JSON.stringify({ email, password }),
             });
             const data = await response.json();
@@ -42,6 +44,11 @@ const AdminLogin = () => {
             }
             else {
                 setuserName(data.user.name);
+                // store the token in localStorage as a fallback for client-side API
+                // helper functions that rely on Authorization header
+                if (typeof window !== 'undefined' && data.token) {
+                    try { localStorage.setItem('authToken', data.token); } catch (e) { /* ignore */ }
+                }
                 router.push('/Admin/AllBlogs')
             }
         } catch (err) {
