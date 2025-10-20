@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
   try {
     // Project onboarding form submission should be allowed without authentication
     const data = await req.json()
-    
+
     // Validate request data
     const validated = ProjectOnboardingSchema.safeParse(data)
     if (!validated.success) {

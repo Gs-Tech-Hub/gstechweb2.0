@@ -1,4 +1,3 @@
-'use client';
 import ProjectOnboardingForm from '../../components/ProjectOnboardingForm';
 
 export default function ProjectOnboarding() {

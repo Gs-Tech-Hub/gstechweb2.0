@@ -20,7 +20,6 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const data = await request.json();
-    console.log(data)
     // Validate blog data
     const validationError = validateBlogData(data);
     if (validationError) {
@@ -40,7 +39,6 @@ export async function POST(request: Request) {
 
     return NextResponse.json(blog, { status: 201 });
   } catch (error) {
-    console.log(error?.message, 'error message')
-    return NextResponse.json({ error: 'Failed to create blog' }, { status: 500 });
+    return NextResponse.json({ error: error?.message || 'Failed to create blog' }, { status: 500 });
   }
 }

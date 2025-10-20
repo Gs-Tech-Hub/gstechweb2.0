@@ -22,7 +22,7 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
 export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
   try {
     const data = await req.json()
-    
+
     // Validate request data
     const validated = ProjectOnboardingSchema.safeParse(data)
     if (!validated.success) {
@@ -45,7 +45,6 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
     await prisma.projectOnboarding.delete({
       where: { id: params.id },
     })
-
     return createResponse({ message: 'Project deleted successfully' })
   } catch (error) {
     return createResponse({ error: 'Failed to delete project' }, 500)

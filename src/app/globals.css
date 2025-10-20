@@ -1,6 +1,9 @@
 @import "tailwindcss";
-
 @import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
 
 .primaryColor {
   background-color: orange;
@@ -11,7 +14,8 @@
 }
 
 image {
-  height: 100%;
+  width: 100%;
+  height: fit-content;
 }
 
 .secondaryBgColor {
@@ -30,6 +34,22 @@ image {
 
 footer p {
   margin: 0.7rem 0rem;
+}
+
+thead th {
+  border-bottom: 1px solid gray;
+  padding: 0.9rem 1rem;
+}
+
+tbody td {
+  border-bottom: 1px solid gray;
+  padding: 1rem;
+  padding-right: 0.45rem;
+  margin-right: 1rem;
+}
+
+button {
+  cursor: pointer;
 }
 
 @media (max-width:865px) {

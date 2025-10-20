@@ -63,32 +63,32 @@ export async function middleware(request: NextRequest) {
     }
     // the code in this try catch block prevente me from updating or deleting a blog, it returns invalid token
     // the verifyAuthToken function gives an error
-    try {
-      // verified returns the null
-      const verified = verifyAuthToken(token);
+    // try {
+    //   // verified returns the null
+    //   const verified = verifyAuthToken(token);
 
-      /* i added the 'verifiedCookie' below for cases where theres no token in the authorization header but theres token in the 
-      request.cookie so we verify that instead */
+    //   /* i added the 'verifiedCookie' below for cases where theres no token in the authorization header but theres token in the 
+    //   request.cookie so we verify that instead */
 
-      // verifiedCookie returns an error
-      /* it  returns "the edge runtime does not support Node.js 'crypto' module.
-     Learn More: https://nextjs.org/docs/messages/node-module-in-edge-runtime" error  */
-      const verifiedCookie = verifyAuthToken(cookieToken);
-      console.log(verifiedCookie, 'cookie')
+    //   // verifiedCookie returns an error
+    //   /* it  returns "the edge runtime does not support Node.js 'crypto' module.
+    //  Learn More: https://nextjs.org/docs/messages/node-module-in-edge-runtime" error  */
+    //   const verifiedCookie = verifyAuthToken(cookieToken);
+    //   console.log(verifiedCookie, 'cookie')
 
-      if (!verified) {
-        if (isAdminRoute) {
-          return NextResponse.redirect(new URL('/Admin', request.url));
-        }
-        return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
-      }
-      return NextResponse.next();
-    } catch (error) {
-      if (isAdminRoute) {
-        return NextResponse.redirect(new URL('/Admin', request.url));
-      }
-      return NextResponse.json({ error: 'Authentication failed' }, { status: 401 });
-    }
+    //   if (!verified) {
+    //     if (isAdminRoute) {
+    //       return NextResponse.redirect(new URL('/Admin', request.url));
+    //     }
+    //     return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
+    //   }
+    //   return NextResponse.next();
+    // } catch (error) {
+    //   if (isAdminRoute) {
+    //     return NextResponse.redirect(new URL('/Admin', request.url));
+    //   }
+    //   return NextResponse.json({ error: 'Authentication failed' }, { status: 401 });
+    // }
   }
 
   return NextResponse.next();

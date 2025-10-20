@@ -15,7 +15,7 @@ const Services = () => {
                     <h3 className='font-bold text-[1.36rem] mb-[0.3rem]'>Digital Presence & Marketing Solutions</h3>
                     <p>Designed to enhance brand visibility and drive customer engagement through targeted digital strategies.</p>
                     <div className='mt-[1.8rem] flex items-center justify-end cursor-pointer  w-[fit-content] ml-[auto] hover:text-[orange]'>
-                        <p className='font-semibold text-[1.1rem]'>Learn more </p>
+                        <Link href='/Service1'><p className='font-semibold text-[1.1rem]'>Learn more </p></Link>
                         <FiArrowUpRight />
                     </div>
                 </div>
@@ -24,7 +24,7 @@ const Services = () => {
                     <h3 className='font-bold text-[1.36rem] mb-[0.3rem]'>Enterprise Management Solutions</h3>
                     <p>A centralized system for businesses to streamline operations and enhance efficiency with automation and digital tools.</p>
                     <div className='mt-[1.8rem] flex items-center justify-end cursor-pointer  w-[fit-content] ml-[auto] hover:text-[orange]'>
-                        <p className='font-semibold text-[1.1rem]'>Learn more </p>
+                        <Link href='/Service2'><p className='font-semibold text-[1.1rem]'>Learn more </p></Link>
                         <FiArrowUpRight />
                     </div>
                 </div>
@@ -33,7 +33,7 @@ const Services = () => {
                     <h3 className='font-bold text-[1.36rem] mb-[0.3rem]'>Hardware & Infrastructure Solutions</h3>
                     <p>For businesses requiring physical infrastructure to support digital transformation and secure operations.</p>
                     <div className='mt-[1.8rem] flex items-center justify-end cursor-pointer hover:text-[orange] w-[fit-content] ml-[auto]'>
-                        <p className='font-semibold text-[1.1rem]'>Learn more </p>
+                        <Link href='/Service3'><p className='font-semibold text-[1.1rem]'>Learn more </p></Link>
                         <FiArrowUpRight />
                     </div>
                 </div>

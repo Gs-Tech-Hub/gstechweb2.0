@@ -43,7 +43,7 @@ model Post {
   slug      String   @unique
   published Boolean  @default(false)
   author    String
-  tags      String[]
+  tags      String
 }
 
 model Contact {

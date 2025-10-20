@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
       <body>
         <GlobalContext>
           <Nav />
-          <main>
+          <main className="mb-[4rem]">
             {children}
           </main>
           <Footer />

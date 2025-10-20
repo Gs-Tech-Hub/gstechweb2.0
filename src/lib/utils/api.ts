@@ -13,7 +13,7 @@ async function handleResponse(response: Response) {
   } else {
     return {
       status: true,
-      message: data
+      message: data?.message || data
     }
   }
 
@@ -94,7 +94,13 @@ export const projectOnboardingApi = {
     });
     return handleResponse(response);
   },
-
+  delete: async (id: string) => {
+    const response = await fetch(`${API_BASE_URL}/api/project-onboarding/${id}`, {
+      method: 'DELETE',
+      headers: getAuthHeaders(),
+    });
+    return handleResponse(response);
+  },
 };
 
 // Portfolio API functions

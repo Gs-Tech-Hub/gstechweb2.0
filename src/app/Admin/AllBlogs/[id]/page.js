@@ -6,10 +6,9 @@ import { BiSolidEditAlt } from 'react-icons/bi';
 import ModalComponent from '../../../../components/Modal';
 import PopUpMessage from '../../../../components/PopUpMessage';
 import Loader from '../../../../components/Loader';
-import { handleResponse, displayPopUpMessage, cancelPopUP } from '../../../../helperFunction/popUp';
+import { handleResponse } from '../../../../helperFunction/popUp';
 import { useGeneralContext } from '../../../../context/GlobalContext'
 import { blogApi } from '../../../../lib/utils/api'
-
 
 
 const page = ({ params }) => {
@@ -18,7 +17,7 @@ const page = ({ params }) => {
     const userData = useGeneralContext()
     const { setblogTitleC, setblogC, setblogTagLineC, setblogIdC, seteditBlogC, userName } = userData
     const [displayPopUp, setdisplayPopUp] = useState(false)
-    const [popUpMsg, setpopUpMsg] = useState('campaign successfully deleted')
+    const [popUpMsg, setpopUpMsg] = useState('')
     const [popUpType, setpopUpType] = useState('error')
     const [isAuthenticated, setisAuthenticated] = useState(false)
     const [blogData, setblogData] = useState({})
@@ -42,7 +41,6 @@ const page = ({ params }) => {
             }
         } catch (error) {
             handleResponse(error?.message || 'unable to delete blog, an error occured', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
-            console.error('Failed to fetch blogs:', error)
         } finally {
             setblogLoader(false)
         }
@@ -58,12 +56,11 @@ const page = ({ params }) => {
     }
 
     useEffect(() => {
-        // if (userName === '') router.push('/Admin')
-        // if (userName === '') console.log('unauth')
-        // else {
-        //     setisAuthenticated(true)
-        //     fetchBlog()
-        // }
+        if (userName === '') router.push('/Admin')
+        else {
+            setisAuthenticated(true)
+            fetchBlog()
+        }
         setisAuthenticated(true)
         fetchBlog()
     }, [router, userName])
@@ -79,8 +76,7 @@ const page = ({ params }) => {
                 seterror({ status: true, message: data.message })
             }
         } catch (error) {
-            seterror({ status: true, message: data.message || 'unable to get blogs, an error occured' })
-            console.error('Failed to fetch blogs:', error)
+            seterror({ status: true, message: error.message || 'unable to get blogs, an error occured' })
         } finally {
             setblogLoader(false)
         }
@@ -91,21 +87,27 @@ const page = ({ params }) => {
         <div>
             {isAuthenticated ?
                 <div className='w-[95%] m-[auto] pt-[0.7rem] pb-[3rem]'>
-                    <div className="mt-[1.6rem] mb-[1rem] w-[100%] m-[auto] pb-[1rem]  max-[740px]:h-[30rem] max-[543px]:h-[26rem] max-[466px]:h-[23rem] max-[426px]:h-[21rem] max-[377px]:h-[19rem]  max-[327px]:h-[16.5rem]">
-                        <img src="/images/marek-piwnicki-zIiKZtB_v-Y-unsplash.jpg" alt="blog image" />
-                    </div>
+                    {
+                        blogData.image !== '' || null || undefined &&
+                        <div className="mt-[1.6rem] mb-[1rem] w-[100%] m-[auto] pb-[1rem] ">
+                            <img src="/images/marek-piwnicki-zIiKZtB_v-Y-unsplash.jpg" alt="blog image" className='h-[43rem] w-[100%] max-[740px]:h-[30rem] max-[543px]:h-[26rem] max-[466px]:h-[23rem] max-[426px]:h-[21rem] max-[377px]:h-[19rem]  max-[327px]:h-[16.5rem]' />
+                        </div>
+                    }
                     <div className='flex items-start justify-between mb-[1.3rem] max-[427px]:block'>
                         <h2 className='font-bold text-[1.4rem] max-[427px]:mb-[1rem]'>{blogData.title}</h2>
                         <div className='flex items-center'>
                             <ModalComponent admin={true} deleteBlog={deleteBlog} />
-                            <BiSolidEditAlt onClick={editBlog} className='ml-[2rem] cursor-pointer' size={28} />
+                            <BiSolidEditAlt onClick={editBlog} className='ml-[1.5rem] cursor-pointer' size={28} />
                         </div>
                     </div>
                     <div className='mb-[1.77rem]'>
                         <p className='text-[1.2rem] leading-[2.2rem]'>{blogData.content}</p>
                     </div>
-                    <div>
+                    <div className='mb-[1.77rem]'>
                         <i className='text-[1.2rem] font-mono'>{blogData.tags}</i>
+                    </div>
+                    <div className='mb-[1.77rem]'>
+                        <p className='text-[0.9rem] text-[#515050]'>{blogData.createdAt}</p>
                     </div>
                     <PopUpMessage popUpMsg={popUpMsg} displayPopUp={displayPopUp} type={popUpType} duration={3000} />
                 </div>

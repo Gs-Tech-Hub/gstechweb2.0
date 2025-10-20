@@ -11,8 +11,7 @@ const page = () => {
                         <h1 className='font-bold text-[1.7rem] mb-[1rem] ml-[4rem] max-[511px]:ml-[1.6rem] max-[347px]:mx-[auto] max-[511px]:text-center'>What is in this service</h1>
                         <div className='flex items-start justify-evenly  flex-wrap'>
                             <div className='w-[40%] mb-[2rem]'>
-                                <h3 className='font-bold text-
-                                [1.7rem] text-center text-[white] px-[0.6rem] py-[0.2rem] rounded-[50%] primaryColor mb-[1rem] w-[fit-content]'>01</h3>
+                                <h3 className='font-bold text-[1.7rem] text-center text-[white] px-[0.6rem] py-[0.2rem] rounded-[50%] primaryColor mb-[1rem] w-[fit-content]'>01</h3>
                                 <h2 className='font-bold text-[1.45rem]  mb-[0rem] max-[479px]:text-[1.2rem]'>IT Hardware <br />Solutions</h2>
                                 <p className='text-[1.2rem] max-[479px]:text-[1.1rem] max-[397px]:text-[1.03rem]'>Admin workstations, customer terminals, and kiosks.</p>
                             </div>
@@ -43,7 +42,7 @@ const page = () => {
                             </div>
                             <div className='flex items-start mt-[3rem]'>
                                 <FaCheckCircle color='green' size={18} />
-                                <h3 className='ml-[0.4rem] mt-[-0.2rem] font-bold text-[1.1rem]'>PoS Syatems</h3>
+                                <h3 className='ml-[0.4rem] mt-[-0.2rem] font-bold text-[1.1rem]'>PoS Systems</h3>
                             </div>
                             <div className='flex items-start mt-[3rem]'>
                                 <FaCheckCircle color='green' size={18} />

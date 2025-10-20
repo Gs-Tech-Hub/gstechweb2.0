@@ -23,7 +23,7 @@ const CreateBlog = () => {
     const [blogTitle, setblogTitle] = useState('')
     const [blog, setblog] = useState('')
     const [blogSlug, setblogSlug] = useState('')
-    const [blogTagLine, setblogTagLine] = useState(['lll'])
+    const [blogTagLine, setblogTagLine] = useState('')
     const [isAuthenticated, setisAuthenticated] = useState(false)
 
     const handleFile = (e) => {
@@ -36,7 +36,7 @@ const CreateBlog = () => {
         setblogTitle('')
         setblog('')
         setImageUrl('')
-        setblogTagLine([''])
+        setblogTagLine('')
     }
     // to put the information of the blog to be edited into the input fields
     useEffect(() => {
@@ -46,7 +46,6 @@ const CreateBlog = () => {
             setblogTagLine(blogTagLineC)
         }
     }, [editBlogC, blogC, blogTitleC, blogTagLineC])
-
     // to redirect to the login page if the user is not logged in
     useEffect(() => {
         if (userName === '') router.push('/Admin')

@@ -24,6 +24,7 @@ const Contact = () => {
         try {
             if (email === '' || name === '' || message === '') handleResponse('fill in all required fields', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
             else {
+                return
                 // wrong endpoint, actual endpoint not yet ready
                 const response = await fetch('/api/auth/login', {
                     method: 'POST',
@@ -48,7 +49,7 @@ const Contact = () => {
     }
 
     return (
-        <div>
+        <div id='contact-us'>
             <div className='pb-[5rem]'>
                 <h1 className='font-bold text-[1.7rem] text-center pt-[1rem] mb-[3.3rem]'>Contact us for more enquiry</h1>
                 <div>

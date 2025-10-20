@@ -42,10 +42,9 @@ const AdminLogin = () => {
             }
             else {
                 setuserName(data.user.name);
-                router.push('/Admin/AllBlogs')
+                router.push('/Admin/Home')
             }
         } catch (err) {
-            console.log(err)
             handleResponse(err?.message || 'an error occured, unable to login', false, setpopUpMsg, setpopUpType, setdisplayPopUp);
         } finally {
             setloading(false)

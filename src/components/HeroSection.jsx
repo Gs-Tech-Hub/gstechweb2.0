@@ -1,6 +1,5 @@
 import React from 'react'
 import Image from 'next/image'
-// c:\Users\ayinm\Downloads\pexels-serpstat-177219-572056 (2).jpg
 import HeroImage from '../../public/images/pexels-serpstat-177219-572056 (2).jpg'
 import Link from 'next/link'
 

@@ -11,7 +11,6 @@ export async function POST(request: Request) {
 
     // Validate login data
     const validationError = validateLoginData(data);
-    console.log(validationError, 'validationError')
     if (validationError) {
       return NextResponse.json({ error: validationError }, { status: 400 });
     }
@@ -63,7 +62,6 @@ export async function POST(request: Request) {
       token
     });
   } catch (error) {
-    console.error('Login error:', error);
     return NextResponse.json({ error: 'Authentication failed' }, { status: 500 });
   }
 }

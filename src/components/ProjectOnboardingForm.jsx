@@ -25,25 +25,21 @@ const ProjectOnboardingForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value)
     setFormData(prev => ({
       ...prev,
       [name]: name === 'budget' ? parseFloat(value) || '' : value
-      // [name]: value
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    console.log(formData)
     try {
       if (formData.companyName === '' || formData.projectType === '' || formData.requirements === '' || formData.email === '') {
         handleResponse('fill in all required fields', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
         return;
       }
       const validated = ProjectOnboardingSchema.safeParse(formData);
-      console.log(validated)
       if (!validated.success) {
         handleResponse(validated.error.errors[0].message || 'an error occured', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
         return;
@@ -58,7 +54,6 @@ const ProjectOnboardingForm = () => {
       });
 
       const data = await response.json();
-      console.log(response)
       if (!response.ok) {
         handleResponse(data?.error || 'an error occured', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
       } else {
