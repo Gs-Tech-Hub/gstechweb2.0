@@ -1,5 +1,4 @@
 "use client"
-import ProjectOnboardingCard from "../../../components/ProjectOnboardingCard";
 import ContactCard from "../../../components/ContactCard";
 import Loader from '../../../components/Loader';
 import { useGeneralContext } from '../../../context/GlobalContext'
@@ -32,7 +31,6 @@ const Contact = () => {
     const fetchContacts = async () => {
         try {
             const data = await ContactApi.getAll()
-            console.log(data)
             if (data.status) {
                 setcontacts(data.message)
             }

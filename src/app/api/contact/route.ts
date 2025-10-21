@@ -24,13 +24,11 @@ export async function POST(req: NextRequest) {
     if (!validated.success) {
       return createResponse({ error: validated.error }, 400)
     }
-    console.log(data)
     const contact = await prisma.contact.create({
       data: validated.data,
     })
     return createResponse(contact, 201)
   } catch (error) {
-    console.log(error)
     return createResponse({ error: 'Failed to create contact' }, 500)
   }
 }

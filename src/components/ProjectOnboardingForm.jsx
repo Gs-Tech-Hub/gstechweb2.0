@@ -27,7 +27,9 @@ const ProjectOnboardingForm = () => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: name === 'budget' ? parseFloat(value) || '' : value
+      // to parse the value if its a number as well as change the budget from a string 
+      // back to a number, if changed by user, to prevent conflict with the project-onboarding schema 
+      [name]: name === 'budget' ? parseFloat(value) || 0 : value
     }));
   };
 
@@ -39,9 +41,11 @@ const ProjectOnboardingForm = () => {
         handleResponse('fill in all required fields', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
         return;
       }
+
       const validated = ProjectOnboardingSchema.safeParse(formData);
+
       if (!validated.success) {
-        handleResponse(validated.error.errors[0].message || 'an error occured', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
+        handleResponse(validated.error.issues[0].message || 'an error occured', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
         return;
       }
 
@@ -71,7 +75,7 @@ const ProjectOnboardingForm = () => {
         });
       }
     } catch (error) {
-      handleResponse(error?.message || 'an error occured, try again later', true, setpopUpMsg, setpopUpType, setdisplayPopUp)
+      handleResponse(error?.message || 'an error occured, try again later', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
     } finally {
       setLoading(false);
     }

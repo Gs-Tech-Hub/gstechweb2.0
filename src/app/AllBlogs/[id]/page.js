@@ -12,8 +12,7 @@ const page = ({ params }) => {
     const router = useRouter()
     const { id } = use(params);
     const userData = useGeneralContext()
-    const { setblogTitleC, setblogC, setblogTagLineC, setblogIdC, seteditBlogC, userName } = userData
-    const [isAuthenticated, setisAuthenticated] = useState(false)
+    const { userName } = userData
     const [blogData, setblogData] = useState({})
     const [blogLoader, setblogLoader] = useState(true)
     const [error, seterror] = useState({
@@ -44,11 +43,9 @@ const page = ({ params }) => {
     if (error.status) return <h2 className='font-bold text-[1.8rem] mt-[5rem] text-center mb-[11rem]'>{error.message}</h2>
     if (blogLoader) return <Loader />
     return (
-        <div>
-            <div>
-                <BlogPage blogData={blogData} admin={false} />
-            </div>
-        </div>
+        <>
+            <BlogPage blogData={blogData} admin={false} />
+        </>
 
     )
 }

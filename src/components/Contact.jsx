@@ -32,16 +32,13 @@ const Contact = () => {
             else {
                 let contactData = { email, name, message, phoneNumber }
                 let resp = await ContactApi.create(contactData)
-                console.log(resp)
                 if (!resp?.status) {
-                    console.log(resp?.message)
                     handleResponse(resp?.message || 'unable to send message, an error occured', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
                 } else {
                     handleResponse('message successfully sent', true, setpopUpMsg, setpopUpType, setdisplayPopUp)
                     clearInputFields()
                 }
             }
-            // }
         } catch (err) {
             handleResponse(err?.message || 'unable to send message, an error occured', false, setpopUpMsg, setpopUpType, setdisplayPopUp);
         } finally {

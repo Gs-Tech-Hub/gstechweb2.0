@@ -16,7 +16,7 @@ const page = ({ params }) => {
     const router = useRouter()
     const { id } = use(params);
     const userData = useGeneralContext()
-    const { setblogTitleC, setblogC, setblogTagLineC, setblogIdC, seteditBlogC, userName } = userData
+    const { setblogDataHandler, seteditBlog, userName } = userData
     const [displayPopUp, setdisplayPopUp] = useState(false)
     const [popUpMsg, setpopUpMsg] = useState('')
     const [popUpType, setpopUpType] = useState('error')
@@ -50,11 +50,13 @@ const page = ({ params }) => {
     }
 
     const editBlog = () => {
-        setblogC(blogData.content)
-        setblogTagLineC(blogData.tags)
-        setblogTitleC(blogData.title)
-        setblogIdC(blogData.id)
-        seteditBlogC(true)
+        setblogDataHandler({
+            blogTitle: blogData.title,
+            blog: blogData.content,
+            blogId: blogData.id,
+            blogTagLine: blogData.tags
+        })
+        seteditBlog(true)
         router.push('/Admin/CreateBlog')
     }
 

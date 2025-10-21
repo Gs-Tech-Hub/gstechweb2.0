@@ -9,7 +9,7 @@ import { blogApi } from '../../../lib/utils/api'
 const AllBlogs = () => {
     const router = useRouter()
     const userData = useGeneralContext()
-    const { seteditBlogC, userName } = userData
+    const { seteditBlog, editBlog, userName } = userData
     const [blogs, setBlogs] = useState([])
     const [blogLoader, setblogLoader] = useState(true)
     const [error, seterror] = useState({
@@ -45,7 +45,7 @@ const AllBlogs = () => {
     }
 
     const createBlog = () => {
-        seteditBlogC(false)
+        if (editBlog) seteditBlog(false)
         router.push('/Admin/CreateBlog')
     }
 

@@ -3,7 +3,7 @@ import Link from "next/link"
 
 const ContactCard = ({ allContacts }) => {
     return (
-        <div className=' w-[95vw]  mx-[auto] overflow-x-auto'>
+        <div className='w-[95vw]  mx-[auto] overflow-x-auto'>
             <table className='m-[auto] max-[755px]:w-[55rem]  mx-[auto] max-[755px]:overflow-x-auto'>
                 <thead>
                     <tr >

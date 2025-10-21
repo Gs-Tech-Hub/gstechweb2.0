@@ -36,7 +36,7 @@ const page = ({ params }) => {
                 handleResponse('project successfully deleted', true, setpopUpMsg, setpopUpType, setdisplayPopUp)
                 setTimeout(() => {
                     router.push('/Admin/ProjectOnboarding')
-                }, 1800);
+                }, 1000);
             }
             else {
                 handleResponse(data?.message || 'unable to delete project, an error ocured', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
@@ -110,8 +110,8 @@ const page = ({ params }) => {
                     {
                         projectInfo?.budget !== 0 &&
                         <div className='mb-[1rem]'>
-                            <h3 className='mb-[0.5rem] font-bold ' >Budget </h3>
-                            <p>{projectInfo?.budget}</p>
+                            <h3 className='mb-[0.5rem] font-bold ' >Budget (USD)</h3>
+                            <p>{projectInfo?.budget?.toLocaleString()}</p>
                         </div>
                     }
                     {

@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react'
 import { use } from 'react';
 import { useRouter } from "next/navigation"
-import { BiSolidEditAlt } from 'react-icons/bi';
 import ModalComponent from '../../../../components/Modal';
 import PopUpMessage from '../../../../components/PopUpMessage';
 import Loader from '../../../../components/Loader';
@@ -60,7 +59,6 @@ const page = ({ params }) => {
     const fetchContact = async () => {
         try {
             const data = await ContactApi.getById(id)
-            console.log(data)
             if (data.status) {
                 setcontactInfo(data.message)
             }

@@ -12,7 +12,7 @@ import { blogApi } from '../../../lib/utils/api'
 const CreateBlog = () => {
     const router = useRouter()
     const userData = useGeneralContext()
-    const { blogC, blogTagLineC, blogTitleC, blogIdC, editBlogC, userName } = userData
+    const { blogDataHandler, editBlog, userName } = userData
     const [displayPopUp, setdisplayPopUp] = useState(false)
     const [popUpMsg, setpopUpMsg] = useState('')
     const [popUpType, setpopUpType] = useState('')
@@ -29,9 +29,9 @@ const CreateBlog = () => {
     const handleFile = (e) => {
         setImageUrl(e.target.files[0].File)
         setselectFile(e.target.files)
-        console.log(imageUrl)
         console.log(selectFile)
     }
+
     const clearInputFields = () => {
         setblogTitle('')
         setblog('')
@@ -40,18 +40,19 @@ const CreateBlog = () => {
     }
     // to put the information of the blog to be edited into the input fields
     useEffect(() => {
-        if (editBlogC && blogC) {
-            setblogTitle(blogTitleC)
-            setblog(blogC)
-            setblogTagLine(blogTagLineC)
+        if (editBlog) {
+            setblogTitle(blogDataHandler.blogTitle)
+            setblog(blogDataHandler.blog)
+            setblogTagLine(blogDataHandler.blogTagLine)
         }
-    }, [editBlogC, blogC, blogTitleC, blogTagLineC])
+    }, [editBlog, blogDataHandler])
     // to redirect to the login page if the user is not logged in
     useEffect(() => {
-        if (userName === '') router.push('/Admin')
-        else {
-            setisAuthenticated(true)
-        }
+        // if (userName === '') router.push('/Admin')
+        // else {
+        //     setisAuthenticated(true)
+        // }
+        setisAuthenticated(true)
     }, [router, userName])
     const redirectToAllBlogs = () => {
         setTimeout(() => {
@@ -76,11 +77,11 @@ const CreateBlog = () => {
                 slug: blogSlug
             }
 
-            if (editBlogC) {
-                let resp = await blogApi.update(blogIdC, blogData)
+            if (editBlog) {
+                let resp = await blogApi.update(blogDataHandler.blogId, blogData)
                 if (!resp?.status) {
-                    console.log(resp)
-                    handleResponse(resp?.message || 'an error occured', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
+                    if (resp.message === 'Author is required') handleResponse('Login to create or edit blog', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
+                    else handleResponse(resp?.message || 'an error occured', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
                 } else {
                     handleResponse('Blog successfully updated', true, setpopUpMsg, setpopUpType, setdisplayPopUp)
                     clearInputFields()
@@ -88,9 +89,7 @@ const CreateBlog = () => {
                 }
             } else {
                 let resp = await blogApi.create(blogData)
-                console.log(resp)
                 if (!resp?.status) {
-                    console.log(resp?.message)
                     handleResponse(resp?.message || 'an error occured', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
                 } else {
                     handleResponse('Blog successfully created', true, setpopUpMsg, setpopUpType, setdisplayPopUp)
@@ -99,7 +98,6 @@ const CreateBlog = () => {
                 }
             }
         } catch (error) {
-            console.error('Failed to save blog:', error)
             handleResponse('Failed to save blog. Please try again.', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
         } finally {
             setloading(false)
@@ -110,7 +108,7 @@ const CreateBlog = () => {
         <div>
             {isAuthenticated ?
                 <div className='pb-[5rem]'>
-                    <h1 className='font-bold text-[1.7rem] text-center pt-[1rem] mb-[3.3rem]'>{editBlogC ? 'Edit Blog' : 'Create Blog'}</h1>
+                    <h1 className='font-bold text-[1.7rem] text-center pt-[1rem] mb-[3.3rem]'>{editBlog ? 'Edit Blog' : 'Create Blog'}</h1>
                     <div>
                         <div className="mx-[auto] w-[70%] max-[807px]:w-[85%] max-[657px]:w-[90%]">
                             <div className='w-[100%] mb-[2.3rem] mt-[2rem] max-[427px]:mb-[0rem] max-[427px]:mt-[1.3rem]'>
@@ -145,7 +143,7 @@ const CreateBlog = () => {
                                         loading ?
                                             <div className="round animate-spin h-[1.5rem] w-[1.5rem] m-[auto] border-[3px] rounded-[50%]  border-x-[white] border-t-[white] border-b-[orange] "></div>
                                             :
-                                            <h3 >{editBlogC ? 'Edit Blog' : 'Create Blog'} </h3>
+                                            <h3 >{editBlog ? 'Edit Blog' : 'Create Blog'} </h3>
 
                                     }
                                 </button>

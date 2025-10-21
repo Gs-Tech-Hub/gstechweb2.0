@@ -1,6 +1,7 @@
 "use client"
-import React from 'react'
 import ModalComponent from './Modal'
+import Avatar from '@mui/material/Avatar';
+
 
 const BlogPage = ({ blogData, admin, editBlog, deleteBlog }) => {
     return (
@@ -15,6 +16,13 @@ const BlogPage = ({ blogData, admin, editBlog, deleteBlog }) => {
                 <div className='mb-[1.3rem]'>
                     <h2 className='font-bold text-[1.4rem] max-[427px]:mb-[1rem]'>{blogData.title}</h2>
                 </div>
+                {
+                    admin &&
+                    <div className='mb-[1rem]'>
+                        <h3 className='mb-[0.5rem] font-bold ' >Status</h3>
+                        <p>{blogData?.published ? 'Published' : 'Not Published'}</p>
+                    </div>
+                }
                 <div className='mb-[1.77rem]'>
                     <p className='text-[1.2rem] leading-[2.2rem]'>{blogData.content}</p>
                 </div>
@@ -23,6 +31,10 @@ const BlogPage = ({ blogData, admin, editBlog, deleteBlog }) => {
                 </div>
                 <div className='mb-[1.77rem]'>
                     <p className='text-[0.9rem] text-[#515050]'>{blogData.createdAt}</p>
+                </div>
+                <div className='flex items-center mb-[1.77rem]'>
+                    <Avatar sx={{ width: 31, height: 31 }} src="/broken-image.jpg" />
+                    <h3 className='ml-[0.5rem] text-[1.21rem]'>{blogData.author}</h3>
                 </div>
                 {
                     admin &&

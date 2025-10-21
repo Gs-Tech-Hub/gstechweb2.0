@@ -69,9 +69,7 @@ export async function PUT(request: Request, { params }: RouteParams) {
 export async function DELETE(request: Request, { params }: RouteParams) {
   try {
     const token = await getAuthToken();
-    console.log(token)
     const payload = token ? verifyToken(token) : null;
-    console.log(payload)
     if (!payload) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
