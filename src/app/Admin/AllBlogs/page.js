@@ -18,12 +18,14 @@ const AllBlogs = () => {
     })
     const [isAuthenticated, setisAuthenticated] = useState(false)
     useEffect(() => {
-        if (userName === '') {
-            router.push('/Admin')
-        } else {
-            setisAuthenticated(true)
-            fetchBlogs()
-        }
+        // if (userName === '') {
+        //     router.push('/Admin')
+        // } else {
+        //     setisAuthenticated(true)
+        //     fetchBlogs()
+        // }
+        setisAuthenticated(true)
+        fetchBlogs()
     }, [router, userName])
 
     const fetchBlogs = async () => {

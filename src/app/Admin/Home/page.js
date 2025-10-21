@@ -49,8 +49,7 @@ const page = () => {
                                 <h2 className=' text-[2rem] font-bold mb-[3.5rem]'>All Contacts</h2>
                                 <div>
                                     <div className='mt-[1.8rem]  flex items-center justify-end cursor-pointer  w-[fit-content] ml-[auto] hover:text-[orange]'>
-                                        {/* <Link href='/Service1'><p className='font-semibold text-[1.1rem]'>View Contacts</p></Link> */}
-                                        <p className='font-semibold text-[1.1rem]'>View Contacts</p>
+                                        <Link href='/Admin/Contact'><p className='font-semibold text-[1.1rem]'>View Contacts</p></Link>
                                         <FiArrowUpRight />
                                     </div>
                                 </div>

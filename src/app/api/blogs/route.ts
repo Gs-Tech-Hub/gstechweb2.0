@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '../../../lib/prisma';
 import { validateBlogData } from '../../../lib/utils/validation';
+import { getAuthToken, verifyToken } from '../../../lib/utils/auth';
 
 // GET /api/blogs - Get all blogs
 export async function GET() {
@@ -12,6 +13,7 @@ export async function GET() {
     });
     return NextResponse.json(blogs);
   } catch (error) {
+    console.log(error)
     return NextResponse.json({ error: 'Failed to fetch blogs' }, { status: 500 });
   }
 }
@@ -19,6 +21,13 @@ export async function GET() {
 // POST /api/blogs - Create a new blog
 export async function POST(request: Request) {
   try {
+    // Server-side auth: ensure token is valid before allowing create
+    const token = await getAuthToken();
+    const payload = token ? verifyToken(token) : null;
+    if (!payload) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const data = await request.json();
     // Validate blog data
     const validationError = validateBlogData(data);

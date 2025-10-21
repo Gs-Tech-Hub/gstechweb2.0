@@ -1,6 +1,7 @@
 'use client'
 import { useTawkTo } from "../helperFunction/useTawkTo";
 import HeroSection from "../components/HeroSection";
+import ViewBlogsCTA from "../components/ViewBlogsCTA";
 import MileStone from "../components/MileStone";
 import About from "../components/About"
 import Services from "../components/Services";
@@ -23,6 +24,7 @@ export default function Home() {
       {/* <Pricing /> */}
       <Testimonial />
       <Contact />
+      <ViewBlogsCTA />
       <OurProcess />
       <CallToAction />
     </div>

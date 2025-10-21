@@ -8,7 +8,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { MdDelete } from 'react-icons/md';
 import { PiWarningFill } from 'react-icons/pi';
 
-export default function ConfirmationModal({ deleteProject, btn }) {
+export default function ConfirmationModal({ handleDelete, btn }) {
     const [open, setOpen] = useState(false);
 
     const handleClickOpen = () => {
@@ -17,14 +17,14 @@ export default function ConfirmationModal({ deleteProject, btn }) {
 
     const handleClose = () => {
         setOpen(false);
-        deleteProject()
+        handleDelete()
     };
 
     return (
         <>
             {
                 btn === true ?
-                    <button onClick={handleClickOpen} className={`px-4 py-1.5 cursor-pointer bg-[black] hover:bg-[#232121] font-bold text-white rounded-md focus:outline-none focus:ring-offset-2 `}>Delete</button>
+                    <button onClick={handleClickOpen} className={`px-3 py-1.5 cursor-pointer bg-[black] hover:bg-[#232121] font-bold text-white rounded-md focus:outline-none focus:ring-offset-2 `}>Delete</button>
                     :
                     <div className='cursor-pointer' onClick={handleClickOpen}><MdDelete size={25} /></div>
             }

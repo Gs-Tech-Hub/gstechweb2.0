@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '../../../../lib/prisma';
 import { validateBlogData } from '../../../../lib/utils/validation';
+import { getAuthToken, verifyToken } from '../../../../lib/utils/auth';
 
 interface RouteParams {
   params: {
@@ -30,6 +31,13 @@ export async function GET(request: Request, { params }: RouteParams) {
 // PUT /api/blogs/[id] - Update a blog
 export async function PUT(request: Request, { params }: RouteParams) {
   try {
+    // verify token server-side
+    const token = await getAuthToken();
+    const payload = token ? verifyToken(token) : null;
+    if (!payload) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const data = await request.json();
     // Validate blog data
     const validationError = validateBlogData(data);
@@ -60,6 +68,13 @@ export async function PUT(request: Request, { params }: RouteParams) {
 // DELETE /api/blogs/[id] - Delete a blog
 export async function DELETE(request: Request, { params }: RouteParams) {
   try {
+    const token = await getAuthToken();
+    console.log(token)
+    const payload = token ? verifyToken(token) : null;
+    console.log(payload)
+    if (!payload) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
     await prisma.post.delete({
       where: {
         id: params.id

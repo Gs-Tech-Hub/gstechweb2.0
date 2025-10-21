@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react'
 import { use } from 'react';
 import { useRouter } from "next/navigation"
-import { BiSolidEditAlt } from 'react-icons/bi';
 import ModalComponent from '../../../../components/Modal';
 import PopUpMessage from '../../../../components/PopUpMessage';
 import Loader from '../../../../components/Loader';
@@ -18,11 +17,12 @@ const page = ({ params }) => {
     const userData = useGeneralContext()
     const { userName } = userData
     const [displayPopUp, setdisplayPopUp] = useState(false)
-    const [popUpMsg, setpopUpMsg] = useState('campaign successfully deleted')
+    const [popUpMsg, setpopUpMsg] = useState('')
     const [popUpType, setpopUpType] = useState('error')
     const [isAuthenticated, setisAuthenticated] = useState(false)
     const [projectInfo, setprojectInfo] = useState({})
     const [projectOnboardingLoader, setprojectOnboardingLoader] = useState(true)
+    const [projectOnboardingDeleteLoader, setprojectOnboardingDeleteLoader] = useState(false)
     const [error, seterror] = useState({
         status: false,
         message: ""
@@ -30,12 +30,13 @@ const page = ({ params }) => {
 
     const deleteProject = async () => {
         try {
+            setprojectOnboardingDeleteLoader(true)
             const data = await projectOnboardingApi.delete(projectInfo.id)
             if (data.status) {
                 handleResponse('project successfully deleted', true, setpopUpMsg, setpopUpType, setdisplayPopUp)
                 setTimeout(() => {
                     router.push('/Admin/ProjectOnboarding')
-                }, 2000);
+                }, 1800);
             }
             else {
                 handleResponse(data?.message || 'unable to delete project, an error ocured', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
@@ -43,20 +44,21 @@ const page = ({ params }) => {
         } catch (error) {
             handleResponse(error?.message || 'unable to delete project, an error occured', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
         } finally {
-            setprojectOnboardingLoader(false)
+            setprojectOnboardingDeleteLoader(false)
         }
     }
 
     useEffect(() => {
-        if (userName === '') router.push('/Admin')
-        else {
-            setisAuthenticated(true)
-            fetchProject()
-        }
+        // if (userName === '') router.push('/Admin')
+        // else {
+        //     setisAuthenticated(true)
+        //     fetchProject()
+        // }
+        setisAuthenticated(true)
+        fetchProject()
     }, [router, userName])
 
     const fetchProject = async () => {
-        setprojectOnboardingLoader(true)
         try {
             const data = await projectOnboardingApi.getById(id)
             if (data.status) {
@@ -75,6 +77,7 @@ const page = ({ params }) => {
     if (projectOnboardingLoader) return <Loader />
     return (
         <div>
+            {projectOnboardingDeleteLoader && <div className='loaderWrapper'><div className='loader'><Loader /></div></div>}
             {isAuthenticated ?
                 <div className='w-[95%] m-[auto] pt-[2rem]'>
                     <div className='mb-[1rem]'>
@@ -130,8 +133,7 @@ const page = ({ params }) => {
                         </div>
                     }
                     <div className='flex items-center'>
-                        <ModalComponent btn={true} deleteProject={deleteProject} />
-                        {/* <BiSolidEditAlt onClick={editBlog} className='ml-[2rem] cursor-pointer' size={28} /> */}
+                        <ModalComponent btn={true} handleDelete={deleteProject} />
                     </div>
                     <PopUpMessage popUpMsg={popUpMsg} displayPopUp={displayPopUp} type={popUpType} duration={3000} />
 

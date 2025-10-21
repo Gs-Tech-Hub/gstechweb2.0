@@ -5,6 +5,7 @@ import { FaPhoneSquareAlt } from 'react-icons/fa';
 import { RiWhatsappFill } from 'react-icons/ri';
 import PopUpMessage from '../components/PopUpMessage'
 import { handleResponse } from '../helperFunction/popUp';
+import { ContactApi } from '../lib/utils/api';
 
 
 const Contact = () => {
@@ -17,30 +18,30 @@ const Contact = () => {
     const [email, setemail] = useState('')
     const [phoneNumber, setphoneNumber] = useState('')
 
+    const clearInputFields = () => {
+        setmessage('')
+        setemail('')
+        setphoneNumber('')
+        setname('')
+    }
     const handleButton = async (e) => {
         setloading(true)
         e.preventDefault()
-
         try {
             if (email === '' || name === '' || message === '') handleResponse('fill in all required fields', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
             else {
-                return
-                // wrong endpoint, actual endpoint not yet ready
-                const response = await fetch('/api/auth/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ email, name, message, phoneNumber }),
-                });
-                const data = await response.json();
-
-                if (!response.ok) {
-                    handleResponse(data?.error || 'unable to send message, an error occured', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
+                let contactData = { email, name, message, phoneNumber }
+                let resp = await ContactApi.create(contactData)
+                console.log(resp)
+                if (!resp?.status) {
+                    console.log(resp?.message)
+                    handleResponse(resp?.message || 'unable to send message, an error occured', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
                 } else {
-                    handleResponse('Message successfully sent', true, setpopUpMsg, setpopUpType, setdisplayPopUp)
+                    handleResponse('message successfully sent', true, setpopUpMsg, setpopUpType, setdisplayPopUp)
+                    clearInputFields()
                 }
             }
+            // }
         } catch (err) {
             handleResponse(err?.message || 'unable to send message, an error occured', false, setpopUpMsg, setpopUpType, setdisplayPopUp);
         } finally {

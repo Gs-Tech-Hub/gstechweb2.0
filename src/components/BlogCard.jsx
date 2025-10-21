@@ -31,7 +31,7 @@ const BlogCard = ({ allBlogs, admin }) => {
                                 />
                                 <p className='text-[0.9rem] mt-[0.3rem] text-[#666464]'>{item.createdAt}</p>
                                 <div className=' text-end'>
-                                    <button className='primaryColor text-[white] outline-none rounded-[2rem] font-bold px-[1rem] py-[0.2rem] cursor-pointer text-[1.1rem] '><Link href={admin ? `/Admin/AllBlogs/${item.id}` : `/Blogs/${item.id}`}>View</Link></button>
+                                    <button className='primaryColor text-[white] outline-none rounded-[2rem] font-bold px-[1rem] py-[0.2rem] cursor-pointer text-[1.1rem] '><Link href={admin ? `/Admin/AllBlogs/${item.id}` : `/AllBlogs/${item.id}`}>View</Link></button>
                                 </div>
                             </div>
                         </div>
