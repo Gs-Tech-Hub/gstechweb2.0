@@ -3,6 +3,7 @@ import { useTawkTo } from "../helperFunction/useTawkTo";
 import HeroSection from "../components/HeroSection";
 import ViewBlogsCTA from "../components/ViewBlogsCTA";
 import MileStone from "../components/MileStone";
+import PastWorks from "../components/PastWorks";
 import About from "../components/About"
 import Services from "../components/Services";
 import Testimonial from "../components/Testimonial";
@@ -21,11 +22,11 @@ export default function Home() {
       <MileStone />
       <About />
       <Services />
-      {/* <Pricing /> */}
       <Testimonial />
       <Contact />
-      <ViewBlogsCTA />
       <OurProcess />
+      <PastWorks />
+      <ViewBlogsCTA />
       <CallToAction />
     </div>
   );

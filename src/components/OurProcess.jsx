@@ -6,7 +6,7 @@ import { ourProcessData } from '../data/ourProcessData'
 
 const OurProcess = () => {
     return (
-        <div className=' py-[1.5rem] pb-[4rem] px-[1rem] max-[564px]:pb-[0.5rem]'>
+        <div className='secondaryBgColor py-[1.5rem] pb-[4rem] px-[1rem] max-[564px]:pb-[0.5rem]'>
             <div>
                 <h1 className='font-bold text-[1.8rem] text-center mb-[3rem]'>Our Process</h1>
                 <div className='flex items-center justify-evenly max-[702px]:justify-around max-[702px]:flex-wrap max-[502px]:block '>
