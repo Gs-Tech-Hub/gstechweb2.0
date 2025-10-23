@@ -2,8 +2,6 @@
 import { useState, useEffect } from 'react'
 import { use } from 'react';
 import { useRouter } from "next/navigation"
-import { BiSolidEditAlt } from 'react-icons/bi';
-import ModalComponent from '../../../../components/Modal';
 import BlogPage from '../../../../components/BlogPage';
 import PopUpMessage from '../../../../components/PopUpMessage';
 import Loader from '../../../../components/Loader';
@@ -54,7 +52,8 @@ const page = ({ params }) => {
             blogTitle: blogData.title,
             blog: blogData.content,
             blogId: blogData.id,
-            blogTagLine: blogData.tags
+            blogTagLine: blogData.tags,
+            blogStatus: blogData.published
         })
         seteditBlog(true)
         router.push('/Admin/CreateBlog')
@@ -74,6 +73,7 @@ const page = ({ params }) => {
         setblogLoader(true)
         try {
             const data = await blogApi.getById(id)
+            console.log(data)
             if (data.status) {
                 setblogData(data.message)
             }

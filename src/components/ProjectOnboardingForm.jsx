@@ -245,6 +245,7 @@ const ProjectOnboardingForm = () => {
       </div>
       <PopUpMessage popUpMsg={popUpMsg} displayPopUp={displayPopUp} type={popUpType} duration={3000} />
 
+
     </form>
   );
 };

@@ -1,10 +1,11 @@
-import { NextResponse } from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
 import { prisma } from '../../../lib/prisma';
 import { validateBlogData } from '../../../lib/utils/validation';
 import { getAuthToken, verifyToken } from '../../../lib/utils/auth';
 
 // GET /api/blogs - Get all blogs
-export async function GET() {
+export async function GET(request: NextRequest) {
+
   try {
     const blogs = await prisma.post.findMany({
       orderBy: {
@@ -47,6 +48,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(blog, { status: 201 });
   } catch (error) {
-    return NextResponse.json({ error: error?.message || 'Failed to create blog' }, { status: 500 });
+    console.log(error)
+    return NextResponse.json({ error: 'Failed to create blog' }, { status: 500 });
   }
 }

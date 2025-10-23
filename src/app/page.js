@@ -17,17 +17,17 @@ export default function Home() {
   useTawkTo();
 
   return (
-    <div>
+    <>
       <HeroSection />
       <MileStone />
       <About />
       <Services />
       <Testimonial />
       <Contact />
-      <OurProcess />
-      <PastWorks />
       <ViewBlogsCTA />
+      <PastWorks />
+      <OurProcess />
       <CallToAction />
-    </div>
+    </>
   );
 }

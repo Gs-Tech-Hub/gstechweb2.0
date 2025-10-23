@@ -9,7 +9,8 @@ export const GlobalContext = ({ children }) => {
         blogTitle: '',
         blog: '',
         blogId: '',
-        blogTagLine: ''
+        blogTagLine: '',
+        blogStatus: false
     })
     const [editBlog, seteditBlog] = useState(false)
 

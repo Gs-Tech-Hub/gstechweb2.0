@@ -24,6 +24,7 @@ const CreateBlog = () => {
     const [blog, setblog] = useState('')
     const [blogSlug, setblogSlug] = useState('')
     const [blogTagLine, setblogTagLine] = useState('')
+    const [blogStatus, setblogStatus] = useState(blogDataHandler.blogStatus)
     const [isAuthenticated, setisAuthenticated] = useState(false)
 
     const handleFile = (e) => {
@@ -44,6 +45,7 @@ const CreateBlog = () => {
             setblogTitle(blogDataHandler.blogTitle)
             setblog(blogDataHandler.blog)
             setblogTagLine(blogDataHandler.blogTagLine)
+            setblogStatus((blogDataHandler.blogStatus) ? 'true' : 'false')
         }
     }, [editBlog, blogDataHandler])
     // to redirect to the login page if the user is not logged in
@@ -60,6 +62,7 @@ const CreateBlog = () => {
         }, 2000);
     }
     const handleButton = async (e) => {
+        console.log(blogStatus)
         e.preventDefault()
         setloading(true)
         try {
@@ -74,7 +77,9 @@ const CreateBlog = () => {
                 image: imageUrl,
                 author: userName,
                 tagLine: blogTagLine,
-                slug: blogSlug
+                slug: blogSlug,
+                // the select option tag stringifies the boolean value
+                published: blogStatus === 'true' ? true : false
             }
 
             if (editBlog) {
@@ -115,7 +120,20 @@ const CreateBlog = () => {
                                 <h3 className='font-medium mb-[0.4rem]'>Blog Title *</h3>
                                 <input type='text' value={blogTitle} onInput={(e) => setblogTitle(e.target.value)} className='bg-[none] outline-none pl-[0.7rem]  py-[0.7rem] w-[100%] border-[1px] border-[#dcd7d7] m-[auto] rounded-md ' />
                             </div>
-
+                            {
+                                editBlog &&
+                                <div className='w-[100%] mb-[2.3rem] mt-[2rem] max-[427px]:mb-[0rem] max-[427px]:mt-[1.3rem]'>
+                                    <h3 className='font-medium mb-[0.4rem]'>Blog Status</h3>
+                                    <select
+                                        onChange={(e) => setblogStatus(e.target.value)}
+                                        className='mt-2 outline-none pl-[0.755em]  py-[0.7rem] w-[100%] border-[1px] border-[#d8d5d5] rounded-md '
+                                    >
+                                        <option value={blogDataHandler.blogStatus}>Change blog status, current status: {blogDataHandler.blogStatus ? 'Published' : 'Not Published'}</option>
+                                        <option value={false}>Not Published</option>
+                                        <option value={true}> Published</option>
+                                    </select>
+                                </div>
+                            }
                             <div className='w-[100%] mb-[2.3rem] mt-[2rem] max-[427px]:mb-[0rem] max-[427px]:mt-[1.3rem]'>
                                 <h3 className='font-medium mb-[0.4rem]'>Blog image *</h3>
                                 <div className='pb-[2rem] m-[auto] border-3 border-dashed border-[lightgray] rounded-[1rem] text-center py-[1.3rem] mb-[2.3rem] max-[563px]:px-[0.6rem]'>
