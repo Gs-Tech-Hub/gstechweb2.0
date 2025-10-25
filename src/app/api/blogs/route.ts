@@ -45,10 +45,8 @@ export async function POST(request: Request) {
         tags: data.tagLine
       }
     });
-
     return NextResponse.json(blog, { status: 201 });
   } catch (error) {
-    console.log(error)
     return NextResponse.json({ error: 'Failed to create blog' }, { status: 500 });
   }
 }

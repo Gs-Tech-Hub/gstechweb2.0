@@ -22,7 +22,6 @@ const CreateBlog = () => {
 
     const [blogTitle, setblogTitle] = useState('')
     const [blog, setblog] = useState('')
-    const [blogSlug, setblogSlug] = useState('')
     const [blogTagLine, setblogTagLine] = useState('')
     const [blogStatus, setblogStatus] = useState(blogDataHandler.blogStatus)
     const [isAuthenticated, setisAuthenticated] = useState(false)
@@ -69,7 +68,7 @@ const CreateBlog = () => {
                 handleResponse('Please fill in all required fields', false, setpopUpMsg, setpopUpType, setdisplayPopUp)
                 return
             }
-            setblogSlug(slugify(blogTitle, { lower: true }))
+            let blogSlug = slugify(blogTitle, { lower: true })
             const blogData = {
                 title: blogTitle,
                 content: blog,
@@ -80,9 +79,6 @@ const CreateBlog = () => {
                 // the select option tag stringifies the boolean value
                 published: blogStatus === 'true' ? true : false
             }
-            console.log(blogData)
-            // return
-
             if (editBlog) {
                 let resp = await blogApi.update(blogDataHandler.blogId, blogData)
                 if (!resp?.status) {
