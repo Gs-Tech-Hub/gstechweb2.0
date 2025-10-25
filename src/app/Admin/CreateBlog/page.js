@@ -62,7 +62,6 @@ const CreateBlog = () => {
         }, 2000);
     }
     const handleButton = async (e) => {
-        console.log(blogStatus)
         e.preventDefault()
         setloading(true)
         try {
@@ -81,6 +80,8 @@ const CreateBlog = () => {
                 // the select option tag stringifies the boolean value
                 published: blogStatus === 'true' ? true : false
             }
+            console.log(blogData)
+            // return
 
             if (editBlog) {
                 let resp = await blogApi.update(blogDataHandler.blogId, blogData)
