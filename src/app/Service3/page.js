@@ -37,19 +37,27 @@ const page = () => {
                         <p className='text-[1.1rem] w-[60%] max-[609px]:w-[85%]'>For businesses requiring physical infrastructure to support digital transformation and secure operations.</p>
                         <div className='my-[2rem] '>
                             <div className='flex items-start mt-[1rem]'>
-                                <FaCheckCircle color='green' size={18} />
+                                <div className='w-[fit-content]'>
+                                    <FaCheckCircle color='green' size={18} />
+                                </div>
                                 <h3 className='ml-[0.4rem] mt-[-0.2rem] font-bold text-[1.1rem]'>IT Hardware Solutions</h3>
                             </div>
                             <div className='flex items-start mt-[3rem]'>
-                                <FaCheckCircle color='green' size={18} />
+                                <div className='w-[fit-content]'>
+                                    <FaCheckCircle color='green' size={18} />
+                                </div>
                                 <h3 className='ml-[0.4rem] mt-[-0.2rem] font-bold text-[1.1rem]'>PoS Systems</h3>
                             </div>
                             <div className='flex items-start mt-[3rem]'>
-                                <FaCheckCircle color='green' size={18} />
+                                <div className='w-[fit-content]'>
+                                    <FaCheckCircle color='green' size={18} />
+                                </div>
                                 <h3 className='ml-[0.4rem] mt-[-0.2rem] font-bold text-[1.1rem]'>Surveillance & Security Systems</h3>
                             </div>
                             <div className='flex items-start mt-[3rem]'>
-                                <FaCheckCircle color='green' size={18} />
+                                <div className='w-[fit-content]'>
+                                    <FaCheckCircle color='green' size={18} />
+                                </div>
                                 <h3 className='ml-[0.4rem] mt-[-0.2rem] font-bold text-[1.1rem]'>Power Backup & Energy Solutions</h3>
                             </div>
                         </div>

@@ -37,27 +37,39 @@ const page = () => {
                         <p className='text-[1.1rem] w-[60%] max-[609px]:w-[85%]'>Designed to enhance brand visibility and drive customer engagement through targeted digital strategies.</p>
                         <div className='my-[2rem] '>
                             <div className='flex items-start mt-[1rem]'>
-                                <FaCheckCircle color='green' size={18} />
+                                <div className='w-[fit-content]'>
+                                    <FaCheckCircle color='green' size={18} />
+                                </div>
                                 <h3 className='ml-[0.4rem] mt-[-0.2rem] font-bold text-[1.1rem]'>Website Design <br />Development and Management</h3>
                             </div>
                             <div className='flex items-start mt-[3rem]'>
-                                <FaCheckCircle color='green' size={18} />
+                                <div className='w-[fit-content]'>
+                                    <FaCheckCircle color='green' size={18} />
+                                </div>
                                 <h3 className='ml-[0.4rem] mt-[-0.2rem] font-bold text-[1.1rem]'>Search Engine Optimization and Content Strategy</h3>
                             </div>
                             <div className='flex items-start mt-[3rem]'>
-                                <FaCheckCircle color='green' size={18} />
+                                <div className='w-[fit-content]'>
+                                    <FaCheckCircle color='green' size={18} />
+                                </div>
                                 <h3 className='ml-[0.4rem] mt-[-0.2rem] font-bold text-[1.1rem]'>Digital Marketing Campaigns</h3>
                             </div>
                             <div className='flex items-start mt-[3rem]'>
-                                <FaCheckCircle color='green' size={18} />
+                                <div className='w-[fit-content]'>
+                                    <FaCheckCircle color='green' size={18} />
+                                </div>
                                 <h3 className='ml-[0.4rem] mt-[-0.2rem] font-bold text-[1.1rem]'>Online Reputation  Management and Customer Engagement</h3>
                             </div>
                             <div className='flex items-start mt-[3rem]'>
-                                <FaCheckCircle color='green' size={18} />
+                                <div className='w-[fit-content]'>
+                                    <FaCheckCircle color='green' size={18} />
+                                </div>
                                 <h3 className='ml-[0.4rem] mt-[-0.2rem] font-bold text-[1.1rem]'>Google Business and Local Directory Integration</h3>
                             </div>
                             <div className='flex items-start mt-[3rem]'>
-                                <FaCheckCircle color='green' size={18} />
+                                <div className='w-[fit-content]'>
+                                    <FaCheckCircle color='green' size={18} />
+                                </div>
                                 <h3 className='ml-[0.4rem] mt-[-0.2rem] font-bold text-[1.1rem]'>Performance Analytics and Data-Driven Marketing Insights</h3>
                             </div>
                         </div>

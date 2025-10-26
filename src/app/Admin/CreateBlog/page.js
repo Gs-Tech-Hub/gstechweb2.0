@@ -17,7 +17,7 @@ const CreateBlog = () => {
     const [popUpMsg, setpopUpMsg] = useState('')
     const [popUpType, setpopUpType] = useState('')
     const [loading, setloading] = useState(false)
-    const [imageUrl, setImageUrl] = useState('n')
+    const [imageUrl, setImageUrl] = useState('')
     const [selectFile, setselectFile] = useState('Select file')
 
     const [blogTitle, setblogTitle] = useState('')
@@ -26,10 +26,11 @@ const CreateBlog = () => {
     const [blogStatus, setblogStatus] = useState(blogDataHandler.blogStatus)
     const [isAuthenticated, setisAuthenticated] = useState(false)
 
-    const handleFile = (e) => {
-        setImageUrl(e.target.files[0].File)
-        setselectFile(e.target.files)
-        console.log(selectFile)
+    const handleFile = (file) => {
+        setImageUrl(file.name)
+        setselectFile(`${file.length} file selected`)
+        console.log(file)
+        console.log(file.length)
     }
 
     const clearInputFields = () => {
@@ -37,6 +38,7 @@ const CreateBlog = () => {
         setblog('')
         setImageUrl('')
         setblogTagLine('')
+        setselectFile('')
     }
     // to put the information of the blog to be edited into the input fields
     useEffect(() => {
@@ -139,7 +141,7 @@ const CreateBlog = () => {
                                     <div id="fileupload " >
                                         <label className="border border-[#DCDADA] px-8 py-2 rounded-[0.4rem] cursor-pointer bg-[#fcf8f8]">
                                             <span >{selectFile}</span>
-                                            <input className='opacity-0 w-4 cursor-pointer' id="file" type="file" accept='image/*' onChange={(e) => handleFile(e)} multiple name="images[]" />
+                                            <input className='opacity-0 w-4 cursor-pointer' id="file" type="file" accept='image/*' onInput={(e) => { handleFile(e.target.files) }} multiple name="images[]" />
                                         </label>
                                     </div>
                                 </div>

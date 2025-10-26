@@ -37,35 +37,51 @@ const page = () => {
                         <p className='text-[1.1rem] w-[60%] max-[609px]:w-[85%]'>A centralized system for business to streamline their operations and enhance efficiency with automation and digital tools.</p>
                         <div className='my-[2rem] '>
                             <div className='flex items-start mt-[1rem]'>
-                                <FaCheckCircle color='green' size={18} />
+                                <div className='w-[fit-content]'>
+                                    <FaCheckCircle color='green' size={18} />
+                                </div>
                                 <h3 className='ml-[0.4rem] mt-[-0.2rem] font-bold text-[1.1rem]'>Customer Relationship Management (CRM)</h3>
                             </div>
                             <div className='flex items-start mt-[3rem]'>
-                                <FaCheckCircle color='green' size={18} />
+                                <div className='w-[fit-content]'>
+                                    <FaCheckCircle color='green' size={18} />
+                                </div>
                                 <h3 className='ml-[0.4rem] mt-[-0.2rem] font-bold text-[1.1rem]'>Inventory & Supply Chain Management</h3>
                             </div>
                             <div className='flex items-start mt-[3rem]'>
-                                <FaCheckCircle color='green' size={18} />
+                                <div className='w-[fit-content]'>
+                                    <FaCheckCircle color='green' size={18} />
+                                </div>
                                 <h3 className='ml-[0.4rem] mt-[-0.2rem] font-bold text-[1.1rem]'>Financial & Accounting Tools</h3>
                             </div>
                             <div className='flex items-start mt-[3rem]'>
-                                <FaCheckCircle color='green' size={18} />
+                                <div className='w-[fit-content]'>
+                                    <FaCheckCircle color='green' size={18} />
+                                </div>
                                 <h3 className='ml-[0.4rem] mt-[-0.2rem] font-bold text-[1.1rem]'>Human Resource Management</h3>
                             </div>
                             <div className='flex items-start mt-[3rem]'>
-                                <FaCheckCircle color='green' size={18} />
+                                <div className='w-[fit-content]'>
+                                    <FaCheckCircle color='green' size={18} />
+                                </div>
                                 <h3 className='ml-[0.4rem] mt-[-0.2rem] font-bold text-[1.1rem]'>Point of Sale (PoS) & Transaction Management </h3>
                             </div>
                             <div className='flex items-start mt-[3rem]'>
-                                <FaCheckCircle color='green' size={18} />
+                                <div className='w-[fit-content]'>
+                                    <FaCheckCircle color='green' size={18} />
+                                </div>
                                 <h3 className='ml-[0.4rem] mt-[-0.2rem] font-bold text-[1.1rem]'>Project & Workflow Automation</h3>
                             </div>
                             <div className='flex items-start mt-[3rem]'>
-                                <FaCheckCircle color='green' size={18} />
+                                <div className='w-[fit-content]'>
+                                    <FaCheckCircle color='green' size={18} />
+                                </div>
                                 <h3 className='ml-[0.4rem] mt-[-0.2rem] font-bold text-[1.1rem]'>Shipping and Logistics Management</h3>
                             </div>
                             <div className='flex items-start mt-[3rem]'>
-                                <FaCheckCircle color='green' size={18} />
+                                <div className='w-[fit-content]'>
+                                    <FaCheckCircle color='green' size={18} />
+                                </div>
                                 <h3 className='ml-[0.4rem] mt-[-0.2rem] font-bold text-[1.1rem]'>Industry Specific Customization</h3>
                             </div>
                         </div>

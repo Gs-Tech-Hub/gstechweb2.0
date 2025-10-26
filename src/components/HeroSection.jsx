@@ -1,9 +1,10 @@
-import React from 'react'
+'use client'
 import Image from 'next/image'
 import HeroImage from '../../public/images/pexels-serpstat-177219-572056 (2).jpg'
 import Link from 'next/link'
 
 const HeroSection = () => {
+
     return (
         <main className='pt-[4rem] pb-[1rem] px-[1rem] ' id='home'>
             <div className='flex items-start justify-center max-[1027px]:block '>

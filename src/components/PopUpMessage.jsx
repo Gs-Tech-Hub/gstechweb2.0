@@ -4,7 +4,7 @@ import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 
 
-export default function PopUpMessage({ displayPopUp, popUpMsg, type, duration }) {
+function PopUpMessage({ displayPopUp, popUpMsg, type, duration }) {
     const [state, setState] = React.useState({
         open: false,
         vertical: 'top',
@@ -34,3 +34,5 @@ export default function PopUpMessage({ displayPopUp, popUpMsg, type, duration })
         </Box>
     );
 }
+
+export default React.memo(PopUpMessage)
