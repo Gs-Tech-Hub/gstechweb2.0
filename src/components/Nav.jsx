@@ -8,6 +8,7 @@ import Link from 'next/link';
 
 const Nav = () => {
     let navLinksStyling = 'flex items-center max-[865px]:block max-[865px]:absolute max-[865px]:bg-[white] max-[865px]:w-[100vw] max-[865px]:h-[100%] max-[865px]:top-[4.6rem]'
+    let liStyling = 'mx-[1.9rem] cursor-pointer text-[1.1rem] max-[990px]:mx-[1rem] max-[865px]:my-[2rem] max-[865px]:font-bold max-[865px]:text-[1.2rem]'
     const [mobile, setmobile] = useState(false)
     const handleNavigation = () => {
         if (mobile) setmobile(false)
@@ -20,11 +21,11 @@ const Nav = () => {
                 <h2 className='font-semibold text-[2rem] max-[475px]:text-[1.8rem]'>GS Tech Hub</h2>
             </div>
             <div className={mobile ? ` ${navLinksStyling} max-[865px]:left-0 transit` : ` ${navLinksStyling} max-[865px]:left-[-100%]`}>
-                <ul className='flex items-center max-[865px]:block  max-[865px]:text-center max-[865px]:pt-[1rem]'>
-                    <li onClick={handleNavigation} className='mx-[1.9rem] cursor-pointer text-[1.1rem] max-[990px]:mx-[1rem] max-[865px]:my-[2rem] max-[865px]:font-bold max-[865px]:text-[1.2rem]'><a href={`${process.env.NEXT_PUBLIC_API_URL}/#home`}>Home</a></li>
-                    <li onClick={handleNavigation} className='mx-[1.9rem] cursor-pointer text-[1.1rem] max-[990px]:mx-[1rem] max-[865px]:my-[2rem] max-[865px]:font-bold max-[865px]:text-[1.2rem]' ><a href={`${process.env.NEXT_PUBLIC_API_URL}/#about`}>About</a></li>
-                    <li onClick={handleNavigation} className='mx-[1.9rem] cursor-pointer text-[1.1rem] max-[990px]:mx-[1rem] max-[865px]:my-[2rem] max-[865px]:font-bold max-[865px]:text-[1.2rem]'><a href={`${process.env.NEXT_PUBLIC_API_URL}/#services`}>Service</a></li>
-                    <li onClick={handleNavigation} className='mx-[1.9rem] cursor-pointer text-[1.1rem] max-[990px]:mx-[1rem] max-[865px]:my-[2rem] max-[865px]:font-bold max-[865px]:text-[1.2rem]'><Link href={`${process.env.NEXT_PUBLIC_API_URL}/#contact-us`}>Contact</Link></li>
+                <ul onClick={handleNavigation} className='flex items-center max-[865px]:block  max-[865px]:text-center max-[865px]:pt-[1rem]'>
+                    <li className={liStyling} ><a href={`${process.env.NEXT_PUBLIC_API_URL}/#home`}>Home</a></li>
+                    <li className={liStyling}  ><a href={`${process.env.NEXT_PUBLIC_API_URL}/#about`}>About</a></li>
+                    <li className={liStyling} ><a href={`${process.env.NEXT_PUBLIC_API_URL}/#services`}>Service</a></li>
+                    <li className={liStyling} ><Link href={`${process.env.NEXT_PUBLIC_API_URL}/#contact-us`}>Contact</Link></li>
                 </ul>
                 <div className='max-[865px]:text-center'><button onClick={handleNavigation} className='cursor pointer primaryColor text-[white] cursor-pointer outline-none rounded-[2rem] px-[0.6rem] py-[0.35rem] text-[1.1rem] max-[990px]:ml-[0.6rem] max-[865px]:font-bold max-[865px]:text-[1.2rem]'><Link href='/project-onboarding'>Get Started</Link></button></div>
             </div>

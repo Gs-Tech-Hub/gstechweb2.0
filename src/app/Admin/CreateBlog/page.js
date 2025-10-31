@@ -17,7 +17,7 @@ const CreateBlog = () => {
     const [popUpMsg, setpopUpMsg] = useState('')
     const [popUpType, setpopUpType] = useState('')
     const [loading, setloading] = useState(false)
-    const [imageUrl, setImageUrl] = useState('')
+    const [imageUrl, setImageUrl] = useState('m')
     const [selectFile, setselectFile] = useState('Select file')
 
     const [blogTitle, setblogTitle] = useState('')

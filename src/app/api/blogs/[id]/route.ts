@@ -11,14 +11,14 @@ interface RouteParams {
 
 // GET /api/blogs/[id] - Get a specific blog
 export async function GET(request: Request, { params }: RouteParams) {
-  let id = params.id
+  let id = await params.id
   console.log(id, 'id')
   console.log(typeof (id), 'type of')
   try {
     const blog = await prisma.post.findUnique({
       where: {
-        id
-        // id: params.id
+        // id
+        id: params.id
       }
     });
 

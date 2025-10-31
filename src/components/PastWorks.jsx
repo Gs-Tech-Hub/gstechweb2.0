@@ -17,7 +17,7 @@ function MultipleItems() {
                     {
                         pastWorkImg.map(item => {
                             return <div key={item.id} className="h-[13rem] max-[908px]:h-[fit-content] max-[850px]:px-[0.5rem]">
-                                <img className='rounded-[1rem] h-[100%] w-[16rem] max-[681px]:w-[100%]' src={item.src} alt="img" />
+                                <img className='rounded-[1rem] mx-[auto] h-[100%] w-[16rem] max-[681px]:w-[100%]' src={item.src} alt="img" />
                             </div>
                         })
                     }
