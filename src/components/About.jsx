@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import AboutImage from '../../public/images/pexels-pixabay-416405.jpg'
+import AboutImage from '../../public/images/pexels-pixabay-416405 (1).jpg'
 
 const About = () => {
     return (

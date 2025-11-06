@@ -17,8 +17,8 @@ const Nav = () => {
     return (
         <nav className='flex items-center justify-between px-[2rem] py-[0.7rem] border-b-[1px] border-[#e0dddd] max-[990px]:px-[1rem] max-[865px]:px-[0.4rem]'>
             <div className='flex items-center'>
-                <div className='w-[4.5rem] h-[fit-content]'><Image src={GsTechLogo} alt="company logo" /></div>
-                <h2 className='font-semibold text-[2rem] max-[475px]:text-[1.8rem]'>GS Tech Hub</h2>
+                <div className='w-[4.5rem] h-[fit-content] max-[359px]:w-[4.1rem]'><Image src={GsTechLogo} alt="company logo" /></div>
+                <h2 className='font-semibold text-[2rem] max-[475px]:text-[1.8rem] max-[489px]:ml-[-0.7rem] max-[359px]:text-[1.59rem] max-[359px]:ml-[-0.45rem]'>GS Tech Hub</h2>
             </div>
             <div className={mobile ? ` ${navLinksStyling} max-[865px]:left-0 transit` : ` ${navLinksStyling} max-[865px]:left-[-100%]`}>
                 <ul onClick={handleNavigation} className='flex items-center max-[865px]:block  max-[865px]:text-center max-[865px]:pt-[1rem]'>

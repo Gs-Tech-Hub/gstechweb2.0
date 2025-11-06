@@ -11,14 +11,11 @@ interface RouteParams {
 
 // GET /api/blogs/[id] - Get a specific blog
 export async function GET(request: Request, { params }: RouteParams) {
-  let id = await params.id
-  console.log(id, 'id')
-  console.log(typeof (id), 'type of')
+  const { id } = await params
   try {
     const blog = await prisma.post.findUnique({
       where: {
-        // id
-        id: params.id
+        id
       }
     });
 
@@ -34,6 +31,7 @@ export async function GET(request: Request, { params }: RouteParams) {
 
 // PUT /api/blogs/[id] - Update a blog
 export async function PUT(request: Request, { params }: RouteParams) {
+  const { id } = await params
   try {
     // verify token server-side
     const token = await getAuthToken();
@@ -51,7 +49,7 @@ export async function PUT(request: Request, { params }: RouteParams) {
 
     const blog = await prisma.post.update({
       where: {
-        id: params?.id
+        id
       },
       data: {
         title: data.title,
@@ -72,6 +70,7 @@ export async function PUT(request: Request, { params }: RouteParams) {
 
 // DELETE /api/blogs/[id] - Delete a blog
 export async function DELETE(request: Request, { params }: RouteParams) {
+  const { id } = await params
   try {
     const token = await getAuthToken();
     const payload = token ? verifyToken(token) : null;
@@ -80,13 +79,12 @@ export async function DELETE(request: Request, { params }: RouteParams) {
     }
     await prisma.post.delete({
       where: {
-        id: params.id
+        id
       }
     });
 
     return new NextResponse(null, { status: 204 });
   } catch (error) {
-
     return NextResponse.json({ error: 'Failed to delete blog' }, { status: 500 });
   }
 }

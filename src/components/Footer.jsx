@@ -49,8 +49,8 @@ const Footer = () => {
                 <div className='max-[839px]:w-[40%] max-[839px]:mb-[2rem] max-[740px]:w-[47%]'>
                     <h2 className='font-bold text-[1.36rem] text-[white] mb-[1.3rem]'>Subscribe to our newsletter</h2>
                     <div className='flex items-center rounded-[2rem] w-[20rem] px-[0.35rem] bg-[white] text-[black] py-[0.3rem] max-[740px]:w-[100%] max-[379px]:px-[0rem] max-[379px]:pr-[0.19rem]  max-[379px]:py-[0rem]'>
-                        <input type='email' placeholder='Email address' required={true} value={email} onInput={(e) => setemail(e.target.value)} className=' outline-none pl-[0.7rem] py-[0.4rem] w-[90%] m-[auto] max-[379px]:w-[93%]' />
-                        <button onClick={handleButton} className='cursor-pointer bg-black text-[white] outline-none rounded-[2rem] px-[1.6rem] py-[0.25rem] text-[1.1rem] max-[740px]:px-[0.8rem] max-[550px]:text-[1rem] max-[550px]:px-[0.5rem] max-[379px]:px-[0.1rem] max-[379px]:text-[0.85rem]'>Submit</button>
+                        <input type='email' placeholder='Email address' required value={email} onInput={(e) => setemail(e.target.value)} className=' outline-none pl-[0.7rem] py-[0.4rem] w-[90%] m-[auto] max-[379px]:w-[93%]' />
+                        <button onClick={handleButton} className='cursor-pointer bg-black text-[white] outline-none rounded-[2rem] px-[1.6rem] py-[0.25rem] text-[1.1rem] max-[740px]:px-[0.8rem] max-[550px]:text-[1rem] max-[550px]:px-[0.5rem] max-[379px]:px-[0.3rem] max-[379px]:text-[0.85rem]'>Submit</button>
                     </div>
 
                 </div>

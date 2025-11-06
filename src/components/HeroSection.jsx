@@ -13,7 +13,7 @@ const HeroSection = () => {
                     <p className=' text-[1.4rem] max-[1322px]:w-[98%] max-[1027px]:w-[60%] max-[1027px]:mx-[auto] max-[707px]:w-[95%] max-[567px]:text-[1.25rem] max-[495px]:text-[1.15rem] max-[395px]:text-[1.1rem]'>Scale automate and grow your business in one stop with our digital solutions creating smarter systems designed for results</p>
                     <button className='cursor-pointer primaryColor text-[white] outline-none rounded-[2rem] px-[1.6rem] py-[0.58rem] mt-[1rem] font-bold text-[1.5rem]'><Link href='/project-onboarding'>Get Started</Link></button>
                 </div>
-                <div className='w-[35%]  h-[fit-content] max-[1322px]:w-[40%] max-[1027px]:hidden'> <Image src={HeroImage} className='rounded-[0.25rem]' alt="hero-image" /></div>
+                <div className='w-[35%]  h-[fit-content] max-[1322px]:w-[40%] max-[1027px]:hidden'> <Image src={HeroImage} loading='eager' className='rounded-[0.25rem]' alt="hero-image" /></div>
             </div>
         </main>
     )
