@@ -17,7 +17,7 @@ const AdminLogin = () => {
     const [password, setpassword] = useState('')
     const [email, setemail] = useState('')
     const [displayPopUp, setdisplayPopUp] = useState(false)
-    const [popUpMsg, setpopUpMsg] = useState('blog successfully deleted')
+    const [popUpMsg, setpopUpMsg] = useState('')
     const [popUpType, setpopUpType] = useState('')
 
 
@@ -77,11 +77,9 @@ const AdminLogin = () => {
                                     <div className="round animate-spin h-[1.5rem] w-[1.5rem] m-[auto] border-[3px] rounded-[50%]  border-x-[white] border-t-[white] border-b-[orange] "></div>
                                     :
                                     <h3 > Log in</h3>
-
                             }
 
                         </button>
-                        {/* } */}
                     </form>
                 </div>
             </div>

@@ -1,6 +1,8 @@
 "use client"
 import ModalComponent from './Modal'
 import Avatar from '@mui/material/Avatar';
+import Image from 'next/image'
+
 
 
 const BlogPage = ({ blogData, admin, editBlog, deleteBlog }) => {
@@ -10,7 +12,7 @@ const BlogPage = ({ blogData, admin, editBlog, deleteBlog }) => {
                 {
                     blogData.image !== '' || null || undefined &&
                     <div className="mt-[1.6rem] mb-[1rem] w-[100%] m-[auto] pb-[1rem] ">
-                        <img src="/images/marek-piwnicki-zIiKZtB_v-Y-unsplash.jpg" alt="blog image" className='h-[43rem] w-[100%] max-[740px]:h-[30rem] max-[543px]:h-[26rem] max-[466px]:h-[23rem] max-[426px]:h-[21rem] max-[377px]:h-[19rem]  max-[327px]:h-[16.5rem]' />
+                        <Image width={800} height={800} src="/images/pexels-serpstat-177219-572056 (2).jpg" alt="blog image" className='h-[43rem] w-[100%] max-[740px]:h-[30rem] max-[543px]:h-[26rem] max-[466px]:h-[23rem] max-[426px]:h-[21rem] max-[377px]:h-[19rem]  max-[327px]:h-[16.5rem]' />
                     </div>
                 }
                 <div className='mb-[1.3rem]'>

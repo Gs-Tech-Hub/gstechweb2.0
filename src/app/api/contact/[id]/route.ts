@@ -4,9 +4,10 @@ import { createResponse } from '../../../../lib/utils/auth'
 import { ContactSchema } from '../../../../lib/utils/validation'
 
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+  const { id } = await params
   try {
     const contact = await prisma.contact.findUnique({
-      where: { id: params.id },
+      where: { id },
     })
     if (!contact) {
       return createResponse({ error: 'Contact not found' }, 404)
@@ -19,6 +20,7 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
 }
 
 export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
+  const { id } = await params
   try {
     const data = await req.json()
 
@@ -29,7 +31,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
     }
 
     const contact = await prisma.contact.update({
-      where: { id: params.id },
+      where: { id },
       data: validated.data,
     })
 
@@ -40,9 +42,10 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
 }
 
 export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+  const { id } = await params
   try {
     await prisma.contact.delete({
-      where: { id: params.id },
+      where: { id },
     })
 
     return createResponse({ message: 'Contact deleted successfully' })

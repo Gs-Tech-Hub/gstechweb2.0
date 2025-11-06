@@ -1,6 +1,7 @@
 "use client"
 import { useState } from 'react'
 import Link from "next/link"
+import Image from "next/image";
 import PopUpMessage from '../components/PopUpMessage';
 import { handleResponse } from '../helperFunction/popUp';
 
@@ -25,7 +26,7 @@ const Footer = () => {
         <footer className='bg-[black] text-white py-[4rem] px-[1rem] max-[609px]:px-[0.4rem]'>
             <div className='flex items-start justify-evenly pb-[2rem] max-[839px]:flex-wrap'>
                 <div className='max-[839px]:w-[40%] max-[839px]:mb-[2rem] max-[740px]:w-[47%]'>
-                    <div className='w-[7.5rem] h-[fit-content]'><img src='/images/GsTechLogo.png' alt="" /></div>
+                    <div className='w-[7.5rem] h-[fit-content]'><Image width={150} height={150} src='/images/GsTechLogo.png' alt="company logo" /></div>
                     <p>+234 815 561 9895</p>
                     <p>+234 815 561 9895</p>
                     <p>info@gstechhub.com.ng</p>

@@ -11,7 +11,6 @@ const BlogCard = ({ allBlogs, admin }) => {
                 {
                     allBlogs.map(item => {
                         return <div key={item.id} className='w-[22rem] my-[2rem] border-[1px] rounded-[0.5rem] border-[lightgray] p-[0.8rem] max-[1417px]:mx-[2rem] max-[1073px]:mx-[1.5%] max-[1073px]:my-[1rem] max-[1188px]:w-[90%] max-[1073px]:p-[0.5rem] max-[390px]:w-[85%] max-[390px]:mx-[auto] max-[390px]:mb-[2rem] max-[390px]:p-[0.68rem]'>
-                            {/* <div className='w-[100%] m-[auto] h-[15rem] max-[684px]:h-[13rem] max-[589px]:h-[11rem] max-[436px]:h-[9rem] max-[390px]:h-[12.5rem]'><img className='rounded-[0.5rem] h-[100%] w-[100%] border-gray-300 border-[1px]' src={item.image === null ? '/images/GsTechLogo.png' : item.image} alt="blog image" /></div> */}
                             <div className='w-[100%] m-[auto] h-[15rem] max-[684px]:h-[13rem] max-[589px]:h-[11rem] max-[436px]:h-[9rem] max-[390px]:h-[12.5rem]'><Image width={200} height={200} className='rounded-[0.5rem] h-[100%] w-[100%] border-gray-300 border-[1px]' src={item.image === null ? '/images/GsTechLogo.png' : item.image} alt="blog image" /></div>
                             <div className='mt-[0.7rem]  w-[100%] max-[509px]:px-[0rem]  max-[489px]:mt-[0.45rem]'>
                                 <h3 className='font-bold mb-[0.3rem] text-[1.1rem] w-[100%] leading-[1rem]'>

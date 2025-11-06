@@ -1,5 +1,6 @@
 import Slider from "react-slick";
 import { pastWorkImg } from "../data/pastWorkData";
+import Image from "next/image";
 function MultipleItems() {
     const settings = {
         dots: true,
@@ -17,7 +18,7 @@ function MultipleItems() {
                     {
                         pastWorkImg.map(item => {
                             return <div key={item.id} className="h-[13rem] max-[908px]:h-[fit-content] max-[850px]:px-[0.5rem]">
-                                <img className='rounded-[1rem] mx-[auto] h-[100%] w-[16rem] max-[681px]:w-[100%]' src={item.src} alt="img" />
+                                <Image className='rounded-[1rem] mx-[auto] h-[100%] w-[16rem] max-[681px]:w-[100%]' width={140} height={140} src={item.src} alt="past work image" />
                             </div>
                         })
                     }

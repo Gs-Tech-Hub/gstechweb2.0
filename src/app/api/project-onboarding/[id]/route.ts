@@ -4,9 +4,10 @@ import { createResponse } from '../../../../lib/utils/auth'
 import { ProjectOnboardingSchema } from '../../../../lib/utils/validation'
 
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+  const { id } = await params
   try {
     const project = await prisma.projectOnboarding.findUnique({
-      where: { id: params.id },
+      where: { id },
     })
 
     if (!project) {
@@ -20,6 +21,7 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
 }
 
 export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
+  const { id } = await params
   try {
     const data = await req.json()
 
@@ -30,7 +32,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
     }
 
     const project = await prisma.projectOnboarding.update({
-      where: { id: params.id },
+      where: { id },
       data: validated.data,
     })
 
@@ -41,9 +43,10 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
 }
 
 export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+  const { id } = await params
   try {
     await prisma.projectOnboarding.delete({
-      where: { id: params.id },
+      where: { id },
     })
     return createResponse({ message: 'Project deleted successfully' })
   } catch (error) {
